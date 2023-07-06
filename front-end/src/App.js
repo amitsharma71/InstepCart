@@ -1,4 +1,5 @@
 import { useRoutes } from "react-router";
+import "./App.css";
 import { defaultProtect } from "./utils/Routes";
 
 function App() {
