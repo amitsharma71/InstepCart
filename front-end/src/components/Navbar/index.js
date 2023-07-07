@@ -1,14 +1,29 @@
-import React from "react";
-
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
+import { useState } from "react";
+import ListMobile from "./ListDetails/List";
 
 const Navbaar = () => {
+  const [showMessage, setShowMessage] = useState({
+    MOBILE: "false",
+    MEN: "false",
+    WOMEN: "false",
+    HOMEKITCHEN: "false",
+    APPLIANCES: "false",
+    SPORTS: "false",
+  });
+
+  const hideMessage = () => {
+    setShowMessage(false);
+  };
+
   return (
     <>
       <div className="nav_header">
@@ -59,7 +74,7 @@ const Navbaar = () => {
               >
                 <Offcanvas.Header closeButton>
                   <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                    INSTEPKART
+                    INSTEPK ART
                   </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
@@ -68,7 +83,7 @@ const Navbaar = () => {
                       <img src="/Image/location.png" alt="location" />
                       <img src="/Image/cart.png" alt="cart" />
                     </Nav.Link>
-                    <Nav.Link href="#action1">MOBILE & MORE</Nav.Link>
+                    <Nav.Link href="www.google.com">MOBILE & MORE</Nav.Link>
                     <Nav.Link href="#action2">MEN</Nav.Link>
                     <Nav.Link href="#action2">WOMEN</Nav.Link>
                     <Nav.Link href="#action2">HOME & KITCHEN</Nav.Link>
@@ -81,12 +96,164 @@ const Navbaar = () => {
           </Navbar>
         ))}
         <div className="sales-navbar sub_header_hide">
-          <p>MOBILE & MORE</p>
-          <p>MEN</p>
-          <p>WOMEN</p>
-          <p>HOME & KITCHEN</p>
-          <p>APPLIANCES</p>
-          <p>SPORTS & MORE</p>
+          <div className="position-relative"    onMouseOver={() => {
+                setShowMessage({ ...showMessage, MOBILE: "true" });
+              
+              }}
+              onMouseOut={hideMessage}>
+            <p
+            className={showMessage.MOBILE?"active":""}
+            
+            >
+              MOBILE & MORE
+            </p>
+
+            {showMessage.MOBILE && (
+              <Container>
+                <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
+                    <div
+                      className="mouseoverdiv"
+                      style={{ backgroundColor: "white" }}
+                    >
+                      {" "}
+                      <ListMobile />
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            )}
+          </div>
+
+          <div className="position-relative"  onMouseOver={() => {
+                setShowMessage({ ...showMessage, MEN: "true" });
+              }}
+              onMouseOut={hideMessage}>
+            <p
+             
+            >
+              MEN
+            </p>
+            {showMessage.MEN && (
+              <Container>
+                <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
+                    <div
+                      className="mouseoverdiv"
+                      style={{ backgroundColor: "white" }}
+                    >
+                      {" "}
+                      hellooo
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            )}
+          </div>
+
+          <div className="position-relative"   onMouseOver={() => {
+                setShowMessage({ ...showMessage, WOMEN: "true" });
+              }}
+              onMouseOut={hideMessage}>
+            <p
+             
+            >
+              WOMEN
+            </p>
+
+            {showMessage.WOMEN && (
+              <Container>
+                <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
+                    <div
+                      className="mouseoverdiv"
+                      style={{ backgroundColor: "white" }}
+                    >
+                      {" "}
+                      women
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            )}
+          </div>
+          <div
+            className="position-relative"
+            onMouseOver={() => {
+              setShowMessage({ ...showMessage, HOMEKITCHEN: "true" });
+            }}
+            onMouseOut={hideMessage}
+          >
+            <p>HOME & KITCHEN</p>
+
+            {showMessage.HOMEKITCHEN && (
+              <Container>
+                <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
+                    <div
+                      className="mouseoverdiv"
+                      style={{ backgroundColor: "white" }}
+                    >
+                      {" "}
+                      HOMEKITCHEN
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            )}
+          </div>
+
+          <div className="position-relative"    onMouseOver={() => {
+                setShowMessage({ ...showMessage, APPLIANCES: "true" });
+              }}>
+            <p
+            
+              onMouseOut={hideMessage}
+            >
+              APPLIANCES
+            </p>
+
+            {showMessage.APPLIANCES && (
+              <Container>
+                <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
+                    <div
+                      className="mouseoverdiv"
+                      style={{ backgroundColor: "white" }}
+                    >
+                      {" "}
+                      APPLIANCES
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            )}
+          </div>
+          <div className="position-relative"  onMouseOver={() => {
+                setShowMessage({ ...showMessage, SPORTS: "true" });
+              }}>
+            <p
+              
+              onMouseOut={hideMessage}
+            >
+              SPORTS & MORE
+            </p>
+            {showMessage.SPORTS && (
+              <Container>
+                <Row>
+                  <Col md={{ span: 6, offset: 3 }}>
+                    <div
+                      className="mouseoverdiv"
+                      style={{ backgroundColor: "white" }}
+                    >
+                      {" "}
+                      SPORTS
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            )}
+          </div>
         </div>
       </div>
       <div>

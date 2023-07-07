@@ -89,6 +89,7 @@
 .search-bar{
   width: 100% !important;
   max-width: 800px;
+  display: flex;
 
 }
 .navbar_align{
@@ -499,4 +500,12 @@ section {
   background-color: #9ad8dd;
   padding: 10px;
   /* text-decoration: ; */
+}
+.mouseoverdiv{
+
+  position: absolute;
+
+}
+.active{
+  background-color: #fff;
 }
