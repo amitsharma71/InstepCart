@@ -11,8 +11,6 @@ export default function ListMobile() {
 Season Essentials
 </h5>
 
-        
-      
     </div>
   )
 }

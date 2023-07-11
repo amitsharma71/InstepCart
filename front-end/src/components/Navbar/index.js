@@ -96,17 +96,14 @@ const Navbaar = () => {
           </Navbar>
         ))}
         <div className="sales-navbar sub_header_hide">
-          <div className="position-relative"    onMouseOver={() => {
-                setShowMessage({ ...showMessage, MOBILE: "true" });
-              
-              }}
-              onMouseOut={hideMessage}>
-            <p
-            className={showMessage.MOBILE?"active":""}
-            
-            >
-              MOBILE & MORE
-            </p>
+          <div
+            className="position-relative"
+            onMouseOver={() => {
+              setShowMessage({ ...showMessage, MOBILE: "true" });
+            }}
+            onMouseOut={hideMessage}
+          >
+            <p className={showMessage.MOBILE ? "active" : ""}>MOBILE & MORE</p>
 
             {showMessage.MOBILE && (
               <Container>
@@ -125,15 +122,14 @@ const Navbaar = () => {
             )}
           </div>
 
-          <div className="position-relative"  onMouseOver={() => {
-                setShowMessage({ ...showMessage, MEN: "true" });
-              }}
-              onMouseOut={hideMessage}>
-            <p
-             
-            >
-              MEN
-            </p>
+          <div
+            className="position-relative"
+            onMouseOver={() => {
+              setShowMessage({ ...showMessage, MEN: "true" });
+            }}
+            onMouseOut={hideMessage}
+          >
+            <p>MEN</p>
             {showMessage.MEN && (
               <Container>
                 <Row>
@@ -151,15 +147,14 @@ const Navbaar = () => {
             )}
           </div>
 
-          <div className="position-relative"   onMouseOver={() => {
-                setShowMessage({ ...showMessage, WOMEN: "true" });
-              }}
-              onMouseOut={hideMessage}>
-            <p
-             
-            >
-              WOMEN
-            </p>
+          <div
+            className="position-relative"
+            onMouseOver={() => {
+              setShowMessage({ ...showMessage, WOMEN: "true" });
+            }}
+            onMouseOut={hideMessage}
+          >
+            <p>WOMEN</p>
 
             {showMessage.WOMEN && (
               <Container>
@@ -203,15 +198,13 @@ const Navbaar = () => {
             )}
           </div>
 
-          <div className="position-relative"    onMouseOver={() => {
-                setShowMessage({ ...showMessage, APPLIANCES: "true" });
-              }}>
-            <p
-            
-              onMouseOut={hideMessage}
-            >
-              APPLIANCES
-            </p>
+          <div
+            className="position-relative"
+            onMouseOver={() => {
+              setShowMessage({ ...showMessage, APPLIANCES: "true" });
+            }}
+          >
+            <p onMouseOut={hideMessage}>APPLIANCES</p>
 
             {showMessage.APPLIANCES && (
               <Container>
@@ -229,15 +222,13 @@ const Navbaar = () => {
               </Container>
             )}
           </div>
-          <div className="position-relative"  onMouseOver={() => {
-                setShowMessage({ ...showMessage, SPORTS: "true" });
-              }}>
-            <p
-              
-              onMouseOut={hideMessage}
-            >
-              SPORTS & MORE
-            </p>
+          <div
+            className="position-relative"
+            onMouseOver={() => {
+              setShowMessage({ ...showMessage, SPORTS: "true" });
+            }}
+          >
+            <p onMouseOut={hideMessage}>SPORTS & MORE</p>
             {showMessage.SPORTS && (
               <Container>
                 <Row>
