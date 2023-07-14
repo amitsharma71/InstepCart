@@ -9,19 +9,19 @@ export const axiosInstance = axios.create({
   },
 });
 
-// export const axiosInstances = axios.create({
-//   baseURL: apiBasePath,
-//   headers: {
-//     "Content-Type": "application/json",
-//     type: "formData",
-//   },
-// });
-
-export const signUpAction = createAsyncThunk("signUpaction", async () => {
+  export const signUpAction = createAsyncThunk("signUpaction", async () => {
   const data1 = await axiosInstance.get(`products`);
   return data1.data;
 });
 
-// fetch("https://jsonplaceholder.typicode.com/todos/1")
-//   .then((response) => response.json())
-//   .then((json) => console.log(json, "aaaaaaaaaaaaa"));
+export const filterdatabyCategory = createAsyncThunk(
+  "filterdatabycategory",
+  async () => {
+    const data1 = await axiosInstance.get(`products/category/`);
+    return data1.data;
+  }
+);
+
+// fetch('https://fakestoreapi.com/products/category/jewelery')
+//             .then(res=>res.json())
+//             .then(json=>console.log(json))

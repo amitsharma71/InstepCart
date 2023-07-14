@@ -9,8 +9,11 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { useState } from "react";
 import ListMobile from "./ListDetails/List";
+import { useNavigate } from "react-router";
+import { BsHeart } from "react-icons/bs";
 
 const Navbaar = () => {
+  const navigate = useNavigate();
   const [showMessage, setShowMessage] = useState({
     MOBILE: "false",
     MEN: "false",
@@ -21,7 +24,17 @@ const Navbaar = () => {
   });
 
   const hideMessage = () => {
-    setShowMessage(false);
+    setShowMessage(true);
+  };
+  const heartClick = () => {
+    navigate("/likeitem");
+  };
+
+  const cartClick = () => {
+    navigate("/addcart");
+  };
+  const notificationClick = () => {
+    navigate("/notification");
   };
 
   return (
@@ -58,9 +71,16 @@ const Navbaar = () => {
                   </p>
                   <img src="/Image/location.png" alt="location" />
                   <span>
-                    <img src="/Image/notification.png" alt="notification" />
+                    <img
+                      onClick={notificationClick}
+                      src="/Image/notification.png"
+                      alt="notification"
+                    />
                   </span>
-                  <img src="/Image/cart.png" alt="cart" />
+                  <span onClick={heartClick}>
+                    <BsHeart />
+                  </span>
+                  <img onClick={cartClick} src="/Image/cart.png" alt="cart" />
                   <p className="sign_hover">Sign In</p>
                 </div>
               </div>
