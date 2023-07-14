@@ -1,7 +1,7 @@
 import React from "react";
 
 function AddtoCart() {
-  return <div>AddtoCart</div>;
+  return <div>AddtoCart for instep</div>;
 }
 
 export default AddtoCart;

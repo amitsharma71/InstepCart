@@ -1,7 +1,10 @@
+
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpAction } from "../../Redux/action/signUpAction";
 import { Button, Card, Row, Col, Badge } from "react-bootstrap";
+
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
 
@@ -30,18 +33,44 @@ const cardData = [
 
 const Home = () => {
   const navigate = useNavigate();
+  const [apiData, setApiData] = useState();
+  const [category, setCategory] = useState();
   const dispatch = useDispatch();
-  const data = useSelector((state) => state?.register?.listdata);
-  console.log(data, "aaaaaabbbbbbbbb");
+  // const data = useSelector((state) => state?.register?.listdata);
+  // console.log(data, "aaaaaabbbbbbbbb");
+
   useEffect(() => {
-    dispatch(signUpAction());
+    // dispatch(signUpAction());
+
+    fetch(`https://fakestoreapi.com/products/categories`)
+      .then((res) => res.json())
+      .then((data) => setCategory(data));
+
+    fetch(`https://fakestoreapi.com/products`)
+      .then((res) => res.json())
+      .then((data) => setApiData(data));
   }, []);
 
+  const handelChange = (e, value) => {
+    console.log(e, "fghjkjhghjklkjhghjk");
+    if (e === true) {
+      fetch(`https://fakestoreapi.com/products/category/${value}`)
+        .then((res) => res.json())
+        .then((data) => setApiData(data));
+    }
+  };
+
+  console.log(category, "json");
   const handleClick = () => {
     navigate("/addcart");
   };
+
+  const imgClick = () => {
+    navigate("/productdetail");
+  };
   return (
     <div>
+
       <div className="slider_col">
         <Row>
           <Col md={9}>
@@ -155,6 +184,7 @@ const Home = () => {
           </Row>
         </Col>
         {/* <Col lg={3}></Col> */}
+
       </Row>
     </div>
   );
