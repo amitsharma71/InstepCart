@@ -1,9 +1,7 @@
-
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpAction } from "../../Redux/action/signUpAction";
-import { Button, Card, Row, Col, Badge } from "react-bootstrap";
+import { Card, Row, Col, Badge } from "react-bootstrap";
 
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
@@ -36,11 +34,11 @@ const Home = () => {
   const [apiData, setApiData] = useState();
   const [category, setCategory] = useState();
   const dispatch = useDispatch();
-  // const data = useSelector((state) => state?.register?.listdata);
-  // console.log(data, "aaaaaabbbbbbbbb");
+  const data = useSelector((state) => state?.register?.listdata);
+  console.log(data, "aaaaaabbbbbbbbb");
 
   useEffect(() => {
-    // dispatch(signUpAction());
+    dispatch(signUpAction());
 
     fetch(`https://fakestoreapi.com/products/categories`)
       .then((res) => res.json())
@@ -65,13 +63,14 @@ const Home = () => {
     navigate("/addcart");
   };
 
-  const imgClick = () => {
+  const imgClick = (i) => {
+    console.log(i, "asasassaaa");
     navigate("/productdetail");
   };
   return (
     <div>
-
-      <div className="slider_col">
+      <div className="container-fluid  slider_col">
+        <button onClick={imgClick}>hello</button>
         <Row>
           <Col md={9}>
             <div className="slider">
@@ -135,60 +134,82 @@ const Home = () => {
             </div>
           </Col>
         </Row>
-      </div>
-      <Row>
-        <Col lg={12}>
-          <Row>
-            {data &&
-              data?.map((e) => {
+
+        <Row>
+          <Col lg={12}>
+            <Row>
+              {/* {apiData &&
+              apiData?.map((e) => {
                 return (
                   <>
-                    <Col md={2}>
-                      <Card className="shopping_card">
-                        {/* <h3>{e.category}</h3> */}
-                        <div className="img_div">
-                          <Card.Img variant="top" src={e.image} />
-                        </div>
-                        <Card.Body>
-                          <div className="item_rating">
-                            <p>
-                              {" "}
-                              <Badge className="badge" bg="danger">
-                                {e.rating.rate}
-                              </Badge>
-                            </p>
-                            <p>
-                              {" "}
-                              <Badge className="badge" bg="primary">
-                                {e.category}
-                              </Badge>
-                            </p>
-                          </div>
-                          <Card.Title className="crad_text">
-                            {e.title}
-                          </Card.Title>
-                          <Card.Text className="crad_text">
-                            {e.description}
-                          </Card.Text>
-                          <p>Price {e.price}</p>
-                          {/* <p>count: {e.rating.count}</p> */}
-                          {/* <p>Rating: {e.rating.rate}</p> */}
-                          {/* <Button variant="primary" onClick={handleClick}>
-                      </Button> */}
-                        </Card.Body>
-                      </Card>
-                    </Col>
+                    <Card style={{ width: "18rem" }}>
+                      <h3>{e.category}</h3>
+                      <Card.Img
+                        onClick={imgClick}
+                        variant="top"
+                        src={e.image}
+                      />
+
+                      <Card.Body>
+                        <Card.Title>{e.title}</Card.Title>
+                        <Card.Text>{e.description}</Card.Text>
+                        <p>price {e.price}</p>
+                        <p>count: {e.rating.count}</p>
+                        <p>Rating: {e.rating.rate}</p>
+                        <Button variant="primary" onClick={handleClick}>
+                          Add To Cart
+                        </Button>
+                        <Button variant="primary">Buy Now</Button>
+                      </Card.Body>
+                    </Card>
                   </>
                 );
-              })}
-          </Row>
-        </Col>
-        {/* <Col lg={3}></Col> */}
-
-      </Row>
+              })} */}
+              {data &&
+                data?.map((e) => {
+                  return (
+                    <>
+                      <Col md={2}>
+                        <Card className="shopping_card">
+                          {/* <h3>{e.category}</h3> */}
+                          <div className="img_div">
+                            <Card.Img variant="top" src={e.image} />
+                          </div>
+                          <Card.Body>
+                            <div className="item_rating">
+                              <p>
+                                {" "}
+                                <Badge className="badge" bg="danger">
+                                  {e.rating.rate}
+                                </Badge>
+                              </p>
+                              <p>
+                                {" "}
+                                <Badge className="badge" bg="primary">
+                                  {e.category}
+                                </Badge>
+                              </p>
+                            </div>
+                            <Card.Title className="crad_text">
+                              {e.title}
+                            </Card.Title>
+                            <Card.Text className="crad_text">
+                              {e.description}
+                            </Card.Text>
+                            <p>Price {e.price}</p>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    </>
+                  );
+                })}
+            </Row>
+          </Col>
+          {/* <Col lg={3}></Col> */}
+        </Row>
+      </div>
     </div>
   );
 };
-
 
 export default Home;
