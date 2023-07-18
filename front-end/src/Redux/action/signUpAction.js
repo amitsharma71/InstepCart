@@ -25,3 +25,8 @@ export const signUpAction = createAsyncThunk("signUpaction", async () => {
 // fetch("https://jsonplaceholder.typicode.com/todos/1")
 //   .then((response) => response.json())
 //   .then((json) => console.log(json, "aaaaaaaaaaaaa"));
+export const addcartapi = createAsyncThunk("addcartapi", async (payload) => {
+  console.log(payload, "hddddhhh");
+  const response = await axiosInstance.get(`products/${payload}`);
+  return response.data;
+});

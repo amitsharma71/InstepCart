@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpAction } from "../../Redux/action/signUpAction";
+import { addcartapi, signUpAction } from "../../Redux/action/signUpAction";
 import { Button, Card, Row, Col, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
+import { Addcartapi } from "../../Redux/action/signUpAction";
+import { Link, useParams } from "react-router-dom";
 
 const cardData = [
   {
@@ -37,12 +39,14 @@ const Home = () => {
     dispatch(signUpAction());
   }, []);
 
-  const handleClick = () => {
-    navigate("/addcart");
-  };
+  // const handleClick = () => {
+  //   navigate("/addcart");
+  // };
+
+  // /const navi = useNavigate();
   return (
     <div>
-      <div className="slider_col">
+      <div className="container-fluid  ">
         <Row>
           <Col md={9}>
             <div className="slider">
@@ -106,59 +110,62 @@ const Home = () => {
             </div>
           </Col>
         </Row>
-      </div>
-      <Row>
-        <Col lg={12}>
-          <Row>
-            {data &&
-              data?.map((e) => {
-                return (
-                  <>
-                    <Col md={2}>
-                      <Card className="shopping_card">
-                        {/* <h3>{e.category}</h3> */}
-                        <div className="img_div">
-                          <Card.Img variant="top" src={e.image} />
-                        </div>
-                        <Card.Body>
-                          <div className="item_rating">
-                            <p>
-                              {" "}
-                              <Badge className="badge" bg="danger">
-                                {e.rating.rate}
-                              </Badge>
-                            </p>
-                            <p>
-                              {" "}
-                              <Badge className="badge" bg="primary">
-                                {e.category}
-                              </Badge>
-                            </p>
-                          </div>
-                          <Card.Title className="crad_text">
-                            {e.title}
-                          </Card.Title>
-                          <Card.Text className="crad_text">
-                            {e.description}
-                          </Card.Text>
-                          <p>Price {e.price}</p>
-                          {/* <p>count: {e.rating.count}</p> */}
-                          {/* <p>Rating: {e.rating.rate}</p> */}
-                          {/* <Button variant="primary" onClick={handleClick}>
+
+        <Row>
+          <Col lg={12}>
+            <Row>
+              {data &&
+                data?.map((e) => {
+                  return (
+                    <>
+                      <Col md={2}>
+                        <Link to={`/productdetail/${e?.id}`} key={e.id}>
+                          <Card className="shopping_card">
+                            {/* <h3>{e.category}</h3> */}
+                            <div className="img_div">
+                              <Card.Img variant="top" src={e.image} />
+                            </div>
+                            <Card.Body>
+                              <div className="item_rating">
+                                <p>
+                                  {" "}
+                                  <Badge className="badge" bg="danger">
+                                    {e.rating.rate}
+                                  </Badge>
+                                </p>
+                                <p>
+                                  {" "}
+                                  <Badge className="badge" bg="primary">
+                                    {e.category}
+                                  </Badge>
+                                </p>
+                              </div>
+                              <Card.Title className="crad_text">
+                                {e.title}
+                              </Card.Title>
+                              <Card.Text className="crad_text">
+                                {e.description}
+                              </Card.Text>
+                              <p>Price {e.price}</p>
+                              {/* <p>count: {e.rating.count}</p> */}
+                              {/* <p>Rating: {e.rating.rate}</p> */}
+                              {/* <Button variant="primary" onClick={handleClick}>
                       </Button> */}
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  </>
-                );
-              })}
-          </Row>
-        </Col>
-        {/* <Col lg={3}></Col> */}
-      </Row>
+                            
+                            </Card.Body>
+                          </Card>
+                        </Link>
+                      </Col>
+                    </>
+                  );
+                })}
+            </Row>
+          </Col>
+          {/* <Col lg={3}></Col> */}
+        </Row>
+      </div>
     </div>
   );
 };
-
 
 export default Home;

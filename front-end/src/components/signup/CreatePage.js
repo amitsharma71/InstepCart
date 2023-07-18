@@ -5,8 +5,26 @@ import Col from "react-bootstrap/Col";
 import { Form, Field } from "react-final-form";
 
 const CreateLogin = () => {
+  let array = [];
   const onSubmit = (values) => {
-    console.log(values, "valdddues");
+    if (values) {
+      let data = localStorage.getItem("items");
+      if (data) {
+        let details = JSON.parse(data);
+        // Check if email already exists
+        const existEmail = details.find((item) => item.Email === values.Email);
+        if (existEmail) {
+          alert("Email already exists!");
+          return;
+        }
+        details.push(values);
+        localStorage.setItem("items", JSON.stringify(details));
+        JSON.parse(localStorage.getItem("item"));
+      } else {
+        localStorage.setItem("items", JSON.stringify([values]));
+      }
+    }
+    alert("Saved");
   };
 
   const validate = (values) => {
@@ -19,6 +37,9 @@ const CreateLogin = () => {
     }
     if (!values.Email) {
       errors.Email = "Required";
+    }
+    if (!values.Password) {
+      errors.Password = "required";
     }
     if (!values.confirmpassword) {
       errors.confirmpassword = "Required";
@@ -89,7 +110,7 @@ const CreateLogin = () => {
                           <label>Email</label>
                           <input
                             {...input}
-                            type="text"
+                            type="email"
                             placeholder="First and last name"
                           />
                           {meta.error && meta.touched && (
