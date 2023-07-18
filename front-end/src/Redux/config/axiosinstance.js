@@ -10,11 +10,9 @@ export const withoutAuth = axios.create({
   },
 });
 
-
 export const axiosInstance = axios.create({
   baseURL: apiBasePath,
   headers: {
     "Content-Type": "application/json",
   },
 });
-

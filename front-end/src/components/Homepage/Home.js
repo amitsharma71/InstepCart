@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addcartapi, signUpAction } from "../../Redux/action/signUpAction";
 import { Button, Card, Row, Col, Badge } from "react-bootstrap";
+import { signUpAction } from "../../Redux/action/signUpAction";
+import { Card, Row, Col, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
 import { Addcartapi } from "../../Redux/action/signUpAction";
@@ -32,21 +34,49 @@ const cardData = [
 
 const Home = () => {
   const navigate = useNavigate();
+  const [apiData, setApiData] = useState();
+  const [category, setCategory] = useState();
   const dispatch = useDispatch();
   const data = useSelector((state) => state?.register?.listdata);
   console.log(data, "aaaaaabbbbbbbbb");
+
   useEffect(() => {
     dispatch(signUpAction());
+
+    fetch(`https://fakestoreapi.com/products/categories`)
+      .then((res) => res.json())
+      .then((data) => setCategory(data));
+
+    fetch(`https://fakestoreapi.com/products`)
+      .then((res) => res.json())
+      .then((data) => setApiData(data));
   }, []);
-
-  // const handleClick = () => {
-  //   navigate("/addcart");
-  // };
-
-  // /const navi = useNavigate();
+  
   return (
     <div>
       <div className="container-fluid  ">
+  const handelChange = (e, value) => {
+    console.log(e, "fghjkjhghjklkjhghjk");
+    if (e === true) {
+      fetch(`https://fakestoreapi.com/products/category/${value}`)
+        .then((res) => res.json())
+        .then((data) => setApiData(data));
+    }
+  };
+
+  console.log(category, "json");
+  const handleClick = () => {
+    navigate("/addcart");
+  };
+
+  const imgClick = (i) => {
+    console.log(i, "asasassaaa");
+    navigate("/productdetail");
+  };
+  return (
+    <div>
+      <div className="container-fluid  slider_col">
+        <button onClick={imgClick}>hello</button>
         <Row>
           <Col md={9}>
             <div className="slider">
@@ -114,6 +144,7 @@ const Home = () => {
         <Row>
           <Col lg={12}>
             <Row>
+
               {data &&
                 data?.map((e) => {
                   return (
@@ -155,6 +186,35 @@ const Home = () => {
                             </Card.Body>
                           </Card>
                         </Link>
+                        <Card className="shopping_card">
+                          {/* <h3>{e.category}</h3> */}
+                          <div className="img_div">
+                            <Card.Img variant="top" src={e.image} />
+                          </div>
+                          <Card.Body>
+                            <div className="item_rating">
+                              <p>
+                                {" "}
+                                <Badge className="badge" bg="danger">
+                                  {e.rating.rate}
+                                </Badge>
+                              </p>
+                              <p>
+                                {" "}
+                                <Badge className="badge" bg="primary">
+                                  {e.category}
+                                </Badge>
+                              </p>
+                            </div>
+                            <Card.Title className="crad_text">
+                              {e.title}
+                            </Card.Title>
+                            <Card.Text className="crad_text">
+                              {e.description}
+                            </Card.Text>
+                            <p>Price {e.price}</p>
+                          </Card.Body>
+                        </Card>
                       </Col>
                     </>
                   );
