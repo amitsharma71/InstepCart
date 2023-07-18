@@ -14,14 +14,9 @@ export const axiosInstance = axios.create({
   return data1.data;
 });
 
-export const filterdatabyCategory = createAsyncThunk(
-  "filterdatabycategory",
-  async () => {
-    const data1 = await axiosInstance.get(`products/category/`);
-    return data1.data;
-  }
-);
+export const addcartapi = createAsyncThunk("addcartapi", async (payload) => {
+  console.log(payload, "hddddhhh");
+  const response = await axiosInstance.get(`products/${payload}`);
+  return response.data;
+});
 
-// fetch('https://fakestoreapi.com/products/category/jewelery')
-//             .then(res=>res.json())
-//             .then(json=>console.log(json))
