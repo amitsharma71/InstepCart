@@ -4,11 +4,14 @@ import Navbar from "../components/Navbar";
 import { Outlet } from "react-router";
 
 function Layout() {
-  return (
+  const token = localStorage.getItem("token");
+  return  token? (
     <>
       <Navbar />
       <Outlet />
     </>
+  ): (
+    <Navigate to="/login" />
   );
 }
 export default memo(Layout);
