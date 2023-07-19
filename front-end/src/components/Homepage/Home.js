@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addcartapi, signUpAction } from "../../Redux/action/signUpAction";
-import { Button, Card, Row, Col, Badge } from "react-bootstrap";
 import { signUpAction } from "../../Redux/action/signUpAction";
 import { Card, Row, Col, Badge } from "react-bootstrap";
+
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
-import { Addcartapi } from "../../Redux/action/signUpAction";
-import { Link, useParams } from "react-router-dom";
+import { productDetails } from "../../Redux/action/registerAction";
 
 const cardData = [
   {
@@ -38,10 +36,12 @@ const Home = () => {
   const [category, setCategory] = useState();
   const dispatch = useDispatch();
   const data = useSelector((state) => state?.register?.listdata);
-  console.log(data, "aaaaaabbbbbbbbb");
+  const datwa = useSelector((state) => state?.product?.listdata.data);
+  console.log(datwa, "aaaaaabbbbbbbbbss");
 
   useEffect(() => {
-    dispatch(signUpAction());
+    // dispatch(signUpAction());
+    dispatch(productDetails());
 
     fetch(`https://fakestoreapi.com/products/categories`)
       .then((res) => res.json())
@@ -51,10 +51,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setApiData(data));
   }, []);
-  
-  return (
-    <div>
-      <div className="container-fluid  ">
+
   const handelChange = (e, value) => {
     console.log(e, "fghjkjhghjklkjhghjk");
     if (e === true) {
@@ -69,14 +66,9 @@ const Home = () => {
     navigate("/addcart");
   };
 
-  const imgClick = (i) => {
-    console.log(i, "asasassaaa");
-    navigate("/productdetail");
-  };
   return (
     <div>
       <div className="container-fluid  slider_col">
-        <button onClick={imgClick}>hello</button>
         <Row>
           <Col md={9}>
             <div className="slider">
@@ -144,48 +136,38 @@ const Home = () => {
         <Row>
           <Col lg={12}>
             <Row>
+              {/* {apiData &&
+              apiData?.map((e) => {
+                return (
+                  <>
+                    <Card style={{ width: "18rem" }}>
+                      <h3>{e.category}</h3>
+                      <Card.Img
+                        onClick={imgClick}
+                        variant="top"
+                        src={e.image}
+                      />
 
+                      <Card.Body>
+                        <Card.Title>{e.title}</Card.Title>
+                        <Card.Text>{e.description}</Card.Text>
+                        <p>price {e.price}</p>
+                        <p>count: {e.rating.count}</p>
+                        <p>Rating: {e.rating.rate}</p>
+                        <Button variant="primary" onClick={handleClick}>
+                          Add To Cart
+                        </Button>
+                        <Button variant="primary">Buy Now</Button>
+                      </Card.Body>
+                    </Card>
+                  </>
+                );
+              })} */}
               {data &&
                 data?.map((e) => {
                   return (
                     <>
                       <Col md={2}>
-                        <Link to={`/productdetail/${e?.id}`} key={e.id}>
-                          <Card className="shopping_card">
-                            {/* <h3>{e.category}</h3> */}
-                            <div className="img_div">
-                              <Card.Img variant="top" src={e.image} />
-                            </div>
-                            <Card.Body>
-                              <div className="item_rating">
-                                <p>
-                                  {" "}
-                                  <Badge className="badge" bg="danger">
-                                    {e.rating.rate}
-                                  </Badge>
-                                </p>
-                                <p>
-                                  {" "}
-                                  <Badge className="badge" bg="primary">
-                                    {e.category}
-                                  </Badge>
-                                </p>
-                              </div>
-                              <Card.Title className="crad_text">
-                                {e.title}
-                              </Card.Title>
-                              <Card.Text className="crad_text">
-                                {e.description}
-                              </Card.Text>
-                              <p>Price {e.price}</p>
-                              {/* <p>count: {e.rating.count}</p> */}
-                              {/* <p>Rating: {e.rating.rate}</p> */}
-                              {/* <Button variant="primary" onClick={handleClick}>
-                      </Button> */}
-                            
-                            </Card.Body>
-                          </Card>
-                        </Link>
                         <Card className="shopping_card">
                           {/* <h3>{e.category}</h3> */}
                           <div className="img_div">
