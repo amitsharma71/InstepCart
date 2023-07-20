@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Form, Field } from "react-final-form";
+import { useDispatch, useSelector } from "react-redux";
+import { registerAction } from "../../Redux/action/registerAction";
 
-const CreateLogin = () => {
+const Registeration = () => {
   let array = [];
+
+  const dispatch = useDispatch();
+
+  // const details = useSelector((state) => state);
+  // console.log(details, "detailssssaaaa");
+    
+  const registerData = {
+    username: "amit",
+    email: "abc@gmail.com",
+    password: "abc1234",
+  };
+  useEffect(() => {
+    dispatch(registerAction(registerData));
+  }, []);
   const onSubmit = (values) => {
     if (values) {
       let data = localStorage.getItem("items");
@@ -30,19 +46,16 @@ const CreateLogin = () => {
   const validate = (values) => {
     const errors = {};
     if (!values.Name) {
-      errors.Name = "Required";
-    }
-    if (!values.Mobile_Number) {
-      errors.Mobile_Number = "Required";
+      errors.Name = "Please enter a valid name";
     }
     if (!values.Email) {
-      errors.Email = "Required";
+      errors.Email = "Please enter a valid email";
     }
     if (!values.Password) {
-      errors.Password = "required";
+      errors.Password = "Please enter a valid Password";
     }
     if (!values.confirmpassword) {
-      errors.confirmpassword = "Required";
+      errors.confirmpassword = "Please Confirm your password";
     } else if (values.confirmpassword !== values.Password) {
       errors.confirmpassword = "Must match";
     }
@@ -50,7 +63,6 @@ const CreateLogin = () => {
   };
   const initialValues = {
     Name: "",
-    Mobile_Number: "",
     Email: "",
     Password: "",
     confirmpassword: "",
@@ -58,10 +70,17 @@ const CreateLogin = () => {
 
   return (
     <div className="container">
-      <Row>
-        <Col md={{ span: 6, offset: 3 }}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Body>
+      <div className="main_page">
+        <Row>
+          <Col md={4} className="signup">
+            <div className="left_content" >
+              <h2>Looks Like You're new here!</h2>
+              <p>sign up with your mobile number to get started</p>
+              <img src="/image/pngwing.com.png" />
+            </div>
+          </Col>
+          <Col md={8}>
+            <div class="right_content">
               <Form
                 onSubmit={onSubmit}
                 initialValues={initialValues}
@@ -76,82 +95,68 @@ const CreateLogin = () => {
                   <form onSubmit={handleSubmit}>
                     <Field name="Name">
                       {({ input, meta }) => (
-                        <div>
-                          <label>Your name</label>
-                          <input
+                        <div className="mb-4">
+                          {/* <label>Your name</label> */}
+                          <input className="login_input"
                             {...input}
                             type="text"
                             placeholder="First and last name"
                           />
                           {meta.error && meta.touched && (
-                            <span>{meta.error}</span>
-                          )}
-                        </div>
-                      )}
-                    </Field>
-                    <Field name="Mobile_Number">
-                      {({ input, meta }) => (
-                        <div>
-                          <label>Mobile number</label>
-                          <input
-                            {...input}
-                            type="number"
-                            placeholder="First and last name"
-                          />
-                          {meta.error && meta.touched && (
-                            <span>{meta.error}</span>
+                            <p className="star">{meta.error}</p>
                           )}
                         </div>
                       )}
                     </Field>
                     <Field name="Email">
                       {({ input, meta }) => (
-                        <div>
-                          <label>Email</label>
-                          <input
+                        <div className="mb-4">
+                          {/* <label>Email</label> */}
+                          <input className="login_input"
                             {...input}
                             type="email"
-                            placeholder="First and last name"
+                            placeholder="Email"
                           />
                           {meta.error && meta.touched && (
-                            <span>{meta.error}</span>
+                            <p className="star">{meta.error}</p>
                           )}
                         </div>
                       )}
                     </Field>
                     <Field name="Password">
                       {({ input, meta }) => (
-                        <div>
-                          <label>Password</label>
-                          <input
+                        <div className="mb-4">
+                          {/* <label>Password</label> */}
+                          <input className="login_input"
                             {...input}
                             type="password"
                             placeholder="Password"
                           />
                           {meta.error && meta.touched && (
-                            <span>{meta.error}</span>
+                            <p className="star">{meta.error}</p>
                           )}
                         </div>
                       )}
                     </Field>
                     <Field name="confirmpassword">
                       {({ input, meta }) => (
-                        <div>
-                          <label>Confirm</label>
-                          <input
+                        <div className="mb-4">
+                          {/* <label>Confirm</label> */}
+                          <input className="login_input"
                             {...input}
                             type="password"
-                            placeholder="Confirm"
+                            placeholder="Confirm Password"
+
                           />
                           {meta.error && meta.touched && (
-                            <span>{meta.error}</span>
+                            <p className="star">{meta.error}</p>
                           )}
                         </div>
                       )}
                     </Field>
-                    <div className="buttons">
-                      <button type="submit">Submit</button>
-                      <button
+                    <div className="button_div ">
+                      <button className="des-but" type="submit ">Continue</button>
+                      <button className="reset_button"
                         type="button"
                         onClick={form.reset}
                         disabled={submitting || pristine}
@@ -162,12 +167,12 @@ const CreateLogin = () => {
                   </form>
                 )}
               />
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+            </div>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 };
 
-export default CreateLogin;
+export default Registeration;

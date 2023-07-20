@@ -59,7 +59,7 @@ server.post("/api/login", async (req, res) => {
     res.send({ loginStatus: false, err: "User Dose not Exist" });
   } else if (UserEmail) {
     const LoginVeryfy =
-      UserEmail[0].email === email && UserEmail[0].password === password;
+      UserEmail[0]?.email === email && UserEmail[0]?.password === password;
     if (LoginVeryfy) {
       const token = jwt.sign({ user: UserEmail }, secretkey, {
         expiresIn: "8h",
