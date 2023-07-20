@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Form, Field } from "react-final-form";
+import { useDispatch, useSelector } from "react-redux";
+import { registerAction } from "../../Redux/action/registerAction";
 
-const CreateLogin = () => {
+const Registeration = () => {
   let array = [];
+
+  const dispatch = useDispatch();
+
+  // const details = useSelector((state) => state);
+  // console.log(details, "detailssssaaaa");
+    
+  const registerData = {
+    username: "amit",
+    email: "abc@gmail.com",
+    password: "abc1234",
+  };
+  useEffect(() => {
+    dispatch(registerAction(registerData));
+  }, []);
   const onSubmit = (values) => {
     if (values) {
       let data = localStorage.getItem("items");
@@ -170,4 +186,4 @@ const CreateLogin = () => {
   );
 };
 
-export default CreateLogin;
+export default Registeration;
