@@ -8,6 +8,7 @@ const User = require("./models/RegisterSchema");
 const jwt = require("jsonwebtoken");
 const secretkey = "secretkey";
 const dotenv = require("dotenv");
+const userproducts = require("./models/ProductsSchema");
 
 dotenv.config();
 
@@ -23,7 +24,8 @@ mongoose
 server.use(cors());
 server.use(bodyParser.json());
 
-server.post("/register", async (req, res) => {
+//register api
+server.post("/api/register", async (req, res) => {
   const { name, email, password } = req.body;
 
   const data = new User({
@@ -31,16 +33,25 @@ server.post("/register", async (req, res) => {
     email: req.body.email,
     password: req.body.password,
   });
+
   try {
-    const dataToSave = await data.save();
-    res.status(200).send({ success: true });
+    const useremail = await User.findOne({ email: email });
+
+    if (useremail) {
+      res
+        .status(200)
+        .send({ success: false, msg: "this email is already exists" });
+    } else {
+      const dataToSave = await data.save();
+      res.status(200).send({ success: true });
+    }
   } catch (error) {
     res.status(400).send({ message: error.message });
   }
 });
 
 //login api
-server.post("/login", async (req, res) => {
+server.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
   const UserEmail = await User.find({ email: email });
 
@@ -59,6 +70,27 @@ server.post("/login", async (req, res) => {
     } else if (!LoginVeryfy) {
       res.send({ loginStatus: false, err: "Password Dose not match" });
     }
+  }
+});
+
+//api of products
+server.post("/api/products", async (req, res) => {
+  const { category, description, title, price, image, rating } = req.body;
+
+  const data = new userproducts({
+    category: req.body.category,
+    description: req.body.description,
+    title: req.body.title,
+    price: req.body.price,
+    image: req.body.image,
+    brand: req.body.brand,
+    rating: req.body.rating,
+  });
+  try {
+    const dataToSave = await data.save();
+    res.status(200).send({ success: true });
+  } catch (error) {
+    res.status(400).send({ message: error.message });
   }
 });
 

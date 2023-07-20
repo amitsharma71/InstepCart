@@ -1,6 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import "./App.css";
 import { defaultProtect, protect } from "./utils/Routes";
+import { withoutAuthRoute } from "./utils/helper";
 
 function App() {
 

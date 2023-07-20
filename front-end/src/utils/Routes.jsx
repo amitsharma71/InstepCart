@@ -8,6 +8,9 @@ import Login from "../components/loginpage/LoginPage";
 import CreateLogin from "../components/signup/CreatePage";
 import LoginLayout from "./LoginLayout";
 import { getToken, getUserId } from "./auth";
+import Layout from "./Layout";
+import { Navigate } from "react-router-dom";
+import AdminLayout from "./AdminLayout";
 
 
 
@@ -57,7 +60,7 @@ const protects = {
             path: "/",
             element: <LoginLayout />,
             children: [
-                // { path: "/", element: <Home /> },
+                { path: "/", element: <Home /> },
                 { path: "/home", element: <Home /> },
                 { path: "/login", element: <Login /> },
                 { path: "/createlogin", element: <CreateLogin /> },
