@@ -54,7 +54,7 @@ const Navbaar = () => {
           >
             <Container fluid className="">
               <div className="nav_bar w-100">
-                <Navbar.Brand href="#">INSTEPKART</Navbar.Brand>
+                <Navbar.Brand href="#">INSTEPCART</Navbar.Brand>
                 <Form className="d-flex search-bar">
                   <Form.Control
                     type="search"
@@ -94,7 +94,7 @@ const Navbaar = () => {
               >
                 <Offcanvas.Header closeButton>
                   <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                    INSTEPK ART
+                    INSTEPCART
                   </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
@@ -123,7 +123,7 @@ const Navbaar = () => {
             }}
             onMouseOut={hideMessage}
           >
-            <p className={showMessage.MOBILE ? "active" : ""}>MOBILE & MORE</p>
+            <p >MOBILE & MORE</p>
 
             {showMessage.MOBILE && (
               <Container>
@@ -199,7 +199,7 @@ const Navbaar = () => {
             }}
             onMouseOut={hideMessage}
           >
-            <p>HOME & KITCHEN</p>
+              <p>HOME & KITCHEN</p>
 
             {showMessage.HOMEKITCHEN && (
               <Container>

@@ -5,7 +5,7 @@ import { Card, Row, Col, Badge } from "react-bootstrap";
 
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
-import { productDetails } from "../../Redux/action/registerAction";
+// import { productDetails } from "../../Redux/action/registerAction";
 
 const cardData = [
   {
@@ -41,7 +41,7 @@ const Home = () => {
 
   useEffect(() => {
     // dispatch(signUpAction());
-    dispatch(productDetails());
+    // dispatch(productDetails());
 
     fetch(`https://fakestoreapi.com/products/categories`)
       .then((res) => res.json())
