@@ -13,10 +13,13 @@ const Login = () => {
     const errors = {};
 
     if (!values.Email) {
-      errors.Email = "Required";
+      errors.Email = "Please enter a valid Email";
+    }
+    if (!values.Password) {
+      errors.Password = "Please enter a valid Password";
     }
     if (!values.confirmpassword) {
-      errors.confirmpassword = "Required";
+      errors.confirmpassword = "Please Enter a Valid Password";
     } else if (values.confirmpassword !== values.Password) {
       errors.confirmpassword = "Must match";
     }
@@ -29,71 +32,89 @@ const Login = () => {
 
   return (
     <div className="container">
-      <Row>
-        <Col md={{ span: 6, offset: 3 }}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Body>
-              <Form
-                onSubmit={onSubmit}
-                initialValues={initialValues}
-                validate={validate}
-                render={({
-                  handleSubmit,
-                  form,
-                  submitting,
-                  pristine,
-                  values,
-                }) => (
-                  <form onSubmit={handleSubmit}>
-                    <Field name="Email">
-                      {({ input, meta }) => (
-                        <div>
-                          <label>Email</label>
-                          <input
-                            {...input}
-                            type="text"
-                            placeholder="First and last name"
-                          />
-                          {meta.error && meta.touched && (
-                            <span>{meta.error}</span>
-                          )}
-                        </div>
-                      )}
-                    </Field>
-                    <Field name="Password">
-                      {({ input, meta }) => (
-                        <div>
-                          <label>Password</label>
-                          <input
-                            {...input}
-                            type="password"
-                            placeholder="Password"
-                          />
-                          {meta.error && meta.touched && (
-                            <span>{meta.error}</span>
-                          )}
-                        </div>
-                      )}
-                    </Field>
 
-                    <div className="buttons">
-                      <button type="submit">Submit</button>
-                      <button
-                        type="button"
-                        onClick={form.reset}
-                        disabled={submitting || pristine}
-                      >
-                        Reset
-                      </button>
-                    </div>
-                  </form>
-                )}
-              />
-            </Card.Body>
-          </Card>
+      <Row>
+        <Col md={2}>
+        </Col>
+          <Col md={8} className="main_page">
+            <Row>
+              <Col md={6} className="signup">
+                <div className="left_content" >
+                  <h2>Login</h2>
+                  <p>Get access to your Orders, Whishlist and Recommendations</p>
+                  <img src="/image/pngwing.com.png" />
+                </div>
+              </Col>
+              <Col md={6}>
+                <div class="right_content">
+                  <Form
+                    onSubmit={onSubmit}
+                    initialValues={initialValues}
+                    validate={validate}
+                    render={({
+                      handleSubmit,
+                      form,
+                      submitting,
+                      pristine,
+                      values,
+                    }) => (
+                      <form onSubmit={handleSubmit}>
+                        <Field name="Email">
+                          {({ input, meta }) => (
+                            <div className="mb-4">
+                              {/* <label>Email</label> */}
+                              <input className="login_input"
+                                {...input}
+                                type="text"
+                                placeholder="Phone/Email"
+                              />
+                              {meta.error && meta.touched && (
+                                <span className="star">{meta.error}</span>
+                              )}
+                            </div>
+                          )}
+                        </Field>
+                        <Field name="Password">
+                          {({ input, meta }) => (
+                            <div className="mb-4">
+                              {/* <label>Password</label> */}
+                              <input className="login_input"
+                                {...input}
+                                type="password"
+                                placeholder="Password"
+                              />
+                              {meta.error && meta.touched && (
+                                <span className="star">{meta.error}</span>
+                              )}
+                            </div>
+                          )}
+                        </Field>
+                        <div className="button_div">
+                          <button className="des-but" type="submit">Continue</button>
+                          <button className="reset_button"
+                            type="button"
+                            onClick={form.reset}
+                            disabled={submitting || pristine}
+                          >
+                            Reset
+                          </button>
+                        </div>
+                      </form>
+                    )}
+                  />
+
+                </div>
+                <div className="create_accnt" >
+                 <a href="#">New to Instepcart? Create an account</a>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+        <Col md={2}>
         </Col>
       </Row>
     </div>
+
   );
 };
 
