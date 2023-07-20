@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addcartapi } from "../action/signUpAction";
+import { addcartapi } from "../action/extraAction";
 
 const initialState = {
   isLoading: false,

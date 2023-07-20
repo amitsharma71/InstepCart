@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Field, Form } from "react-final-form";
+import { useDispatch } from "react-redux";
+import { loginAction } from "../../Redux/action/loginAction";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const logininput = {
+    email: "abc@gmail.com",
+    password: "abc1234",
+  };
+
+  useEffect(() => {
+    dispatch(loginAction(logininput));
+  }, []);
+
   const onSubmit = (values) => {
     console.log(values, "valdddues");
   };

@@ -9,9 +9,6 @@ const jwt = require("jsonwebtoken");
 const secretkey = "secretkey";
 const dotenv = require("dotenv");
 
-
-
-
 dotenv.config();
 
 const DB =
@@ -45,32 +42,25 @@ server.post("/register", async (req, res) => {
 //login api
 server.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  const UserEmail = await User.find({email:email});
+  const UserEmail = await User.find({ email: email });
 
+  if (!UserEmail) {
+    res.send({ loginStatus: false, err: "User Dose not Exist" });
+  } else if (UserEmail) {
+    const LoginVeryfy =
+      UserEmail[0]?.email === email && UserEmail[0]?.password === password;
+    if (LoginVeryfy) {
+      const token = jwt.sign({ user: UserEmail }, secretkey, {
+        expiresIn: "8h",
+      });
 
-    if (!UserEmail) {
-      res.send({ loginStatus: false, err: "User Dose not Exist" });
-    } else if (UserEmail) {
-      const LoginVeryfy =
-        UserEmail[0].email === email &&
-        UserEmail[0].password === password;
-      if (LoginVeryfy) {
-        const token = jwt.sign({ user: UserEmail }, secretkey, {
-          expiresIn: "8h",
-        });
-
-        res.json({ loginStatus: LoginVeryfy, tokenuigiugitygtyigtyi: token });
-        console.log(token, "okkkkkk");
-      } else if (!LoginVeryfy) {
-        res.send({ loginStatus: false, err: "Password Dose not match" });
-      }
+      res.json({ loginStatus: LoginVeryfy, tokenuigiugitygtyigtyi: token });
+      console.log(token, "okkkkkk");
+    } else if (!LoginVeryfy) {
+      res.send({ loginStatus: false, err: "Password Dose not match" });
     }
-
-
-  
+  }
 });
-
-
 
 const PORT = process.env.PORT || 6000;
 server.listen(PORT, () => {
