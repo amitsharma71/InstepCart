@@ -9,15 +9,17 @@ const jwt = require("jsonwebtoken");
 const secretkey = "secretkey";
 const dotenv = require("dotenv");
 const userproducts = require("./models/ProductsSchema");
+const categorytable = require("./models/categorytable");
 
 dotenv.config();
 
 const DB =
   "mongodb+srv://noutiyalgopal:MDgopal87@cluster0.mo1orsr.mongodb.net/instepcart-backend?retryWrites=true&w=majority";
+
 mongoose
   .connect(DB)
   .then(() => {
-    console.log(`connection is success`);
+    console.log(`connection is mongoose  success`);
   })
   .catch((err) => console.log(`no connection`, err));
 
@@ -73,7 +75,7 @@ server.post("/api/login", async (req, res) => {
   }
 });
 
-//api of products
+//api of products addd
 server.post("/api/products", async (req, res) => {
   const { category, description, title, price, image, rating } = req.body;
 
@@ -93,8 +95,38 @@ server.post("/api/products", async (req, res) => {
     res.status(400).send({ message: error.message });
   }
 });
+//api of products all
 
-const PORT = process.env.PORT || 6000;
+server.get("/api/Getproducts", async (req, resp) => {
+  console.log(req, resp, "console.log");
+  let products = await userproducts.find();
+
+  if (products.length > 0) {
+    resp.send(products);
+  } else {
+    resp.send({ result: "no products found" });
+  }
+});
+
+//table addd api
+
+server.post("/api/addproducts", async (req, res) => {
+  const { name } = req.body;
+
+  const arr = req.body.categoryData;
+  console.log(arr, "aaa");
+  categorytable.insertMany(arr);
+
+ 
+  try {
+    // const dataToSave = await data.save();
+    res.status(200).send({ success: true });
+  } catch (error) {
+    res.status(400).send({ message: error.message });
+  }
+});
+
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
