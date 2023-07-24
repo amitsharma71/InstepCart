@@ -5,30 +5,37 @@ import { Card, Row, Col, Badge } from "react-bootstrap";
 
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
+import {
+  BsFillBagFill,
+  BsFillGiftFill,
+  BsQuestionCircleFill,
+  BsStarHalf,
+} from "react-icons/bs";
+
 // import { productDetails } from "../../Redux/action/registerAction";
 
-const cardData = [
-  {
-    cardImg: "image/pexels-pixabay-267320 (1).jpg",
-    cardName: "Footwear",
-    cardPara: "Upto 70% off",
-  },
-  {
-    cardImg: "image/pexels-terje-sollie-298863.jpg",
-    cardName: "clothing",
-    cardPara: "Upto 70% off",
-  },
-  {
-    cardImg: "image/pexels-godisable-jacob-934673.jpg",
-    cardName: "Bags ",
-    cardPara: "Upto 80% off",
-  },
-  {
-    cardImg: "image/pexels-torsten-dettlaff-437038 (1).jpg",
-    cardName: "Watches",
-    cardPara: "Upto 40% off",
-  },
-];
+// const cardData = [
+//   {
+//     cardImg: "image/pexels-pixabay-267320 (1).jpg",
+//     cardName: "Footwear",
+//     cardPara: "Upto 70% off",
+//   },
+//   {
+//     cardImg: "image/pexels-terje-sollie-298863.jpg",
+//     cardName: "clothing",
+//     cardPara: "Upto 70% off",
+//   },
+//   {
+//     cardImg: "image/pexels-godisable-jacob-934673.jpg",
+//     cardName: "Bags ",
+//     cardPara: "Upto 80% off",
+//   },
+//   {
+//     cardImg: "image/pexels-torsten-dettlaff-437038 (1).jpg",
+//     cardName: "Watches",
+//     cardPara: "Upto 40% off",
+//   },
+// ];
 
 const Home = () => {
   const navigate = useNavigate();
@@ -42,14 +49,12 @@ const Home = () => {
   useEffect(() => {
     // dispatch(signUpAction());
     // dispatch(productDetails());
-
-    fetch(`https://fakestoreapi.com/products/categories`)
-      .then((res) => res.json())
-      .then((data) => setCategory(data));
-
-    fetch(`https://fakestoreapi.com/products`)
-      .then((res) => res.json())
-      .then((data) => setApiData(data));
+    // fetch(`https://fakestoreapi.com/products/categories`)
+    //   .then((res) => res.json())
+    //   .then((data) => setCategory(data));
+    // fetch(`https://fakestoreapi.com/products`)
+    //   .then((res) => res.json())
+    //   .then((data) => setApiData(data));
   }, []);
 
   const handelChange = (e, value) => {
@@ -70,69 +75,37 @@ const Home = () => {
     <div>
       <div className="container-fluid  slider_col">
         <Row>
-          <Col md={9}>
+          <Col md={12}>
             <div className="slider">
               <Carousel className="">
                 <Carousel.Item interval={1000}>
                   <img
                     className="slide_img"
-                    src="https://images-eu.ssl-images-amazon.com/images/G/31/prime/PD23/ACQ/hero/v2/PC_Hero_3000x1200_2X_EN._CB600991698_.jpg "
+                    src=" https://itechbahrain.com/wp-content/uploads/2020/05/eletro.jpg"
                     alt="First slide"
                   />
-                  <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>
-                      Nulla vitae elit libero, a pharetra augue mollis interdum.
-                    </p>
-                  </Carousel.Caption>
+                  <Carousel.Caption></Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item interval={500}>
                   <img
                     className="slide_img"
-                    src="https://images-eu.ssl-images-amazon.com/images/G/31/img2020/img21/apparelGW/junatf23/unrecapay/MA_3000._CB603210873_.jpg"
+                    src="https://www.axelaccessories.com/media/homepage/2023/Sliders/03_SALE_NEW_40_-_TOP_SLIDER_-_1920X700_SS23.jpg"
                     alt="Second slide"
                   />
-                  <Carousel.Caption>
-                    <h3>Style for men</h3>
-                    <p>get 18% off*</p>
-                  </Carousel.Caption>
+                  <Carousel.Caption></Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
                     className="slide_img"
-                    src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/Shreyansh/BAU/Unrexc/D70978891_INWLD_BAU_Unrec_Uber_PC_Hero_3000x1200._CB594707876_.jpg"
+                    src="https://clotya.co.uk/wp-content/uploads/2023/02/Banner-1-1.jpg"
                     alt="Third slide"
                   />
-                  <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>
-                      Praesent commodo cursus magna, vel scelerisque nisl
-                      consectetur.
-                    </p>
-                  </Carousel.Caption>
+                  <Carousel.Caption></Carousel.Caption>
                 </Carousel.Item>
               </Carousel>
             </div>
           </Col>
-          <Col md={3}>
-            <div className="right_col">
-              <Row xs={1} md={2} className="g-4">
-                {cardData?.map((item, index) => (
-                  <Col key={index}>
-                    <Card>
-                      <Card.Img variant="top" src={item?.cardImg} alt="" />
-                      <Card.Body>
-                        <Card.Title>{item?.cardName}</Card.Title>
-                        <p className="right_col_detail">{item?.cardPara}</p>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </Row>
-            </div>
-          </Col>
         </Row>
-
         <Row>
           <Col lg={12}>
             <Row>
@@ -203,8 +176,9 @@ const Home = () => {
                 })}
             </Row>
           </Col>
-          {/* <Col lg={3}></Col> */}
+          <Col lg={3}></Col>
         </Row>
+       
       </div>
     </div>
   );
