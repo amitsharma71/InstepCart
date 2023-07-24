@@ -10,7 +10,7 @@ const secretkey = "secretkey";
 const dotenv = require("dotenv");
 const userproducts = require("./models/ProductsSchema");
 const categorytable = require("./models/categorytable");
-
+const productsjson =require("./home")
 dotenv.config();
 
 const DB =
@@ -31,10 +31,12 @@ server.use(bodyParser.json());
 server.post("/api/register", async (req, res) => {
   const { name, email, password } = req.body;
 
+  const role = "user"; 
   const data = new User({
     username: req.body.name,
     email: req.body.email,
     password: req.body.password,
+    role: role,
   });
 
   try {
@@ -64,7 +66,7 @@ server.post("/api/login", async (req, res) => {
     const LoginVeryfy =
       UserEmail[0]?.email === email && UserEmail[0]?.password === password;
     if (LoginVeryfy) {
-      const token = jwt.sign({ user: UserEmail }, secretkey, {
+      const token = jwt.sign({ userEmail: UserEmail[0]?.email,userRole: UserEmail[0]?.role, userName: UserEmail[0]?.username }, secretkey, {
         expiresIn: "8h",
       });
 
@@ -78,7 +80,7 @@ server.post("/api/login", async (req, res) => {
 
 //api of products addd
 server.post("/api/products", async (req, res) => {
-  const { category, description, title, price, image, rating } = req.body;
+  const { category, description, title, price, image,brand, rating,subcategory, thumbnail,stock,discountPercentage} = req.body;
 
   const data = new userproducts({
     category: req.body.category,
@@ -88,6 +90,10 @@ server.post("/api/products", async (req, res) => {
     image: req.body.image,
     brand: req.body.brand,
     rating: req.body.rating,
+    subcategory:req.body.subcategory,
+    thumbnail:req.body.subcategory,
+    stock:req.body.stock,
+    discountPercentage:req.body.discountPercentage,
   });
   try {
     const dataToSave = await data.save();
@@ -109,23 +115,42 @@ server.get("/api/Getproducts", async (req, resp) => {
   }
 });
 
-//table addd api
+//table addd api category
 
-server.post("/api/addproducts", async (req, res) => {
-  const { name } = req.body;
+// server.post("/api/addproducts", async (req, res) => {
+//   const { name } = req.body;
 
-  const arr = req.body.categoryData;
-  console.log(arr, "aaa");
-  categorytable.insertMany(arr);
+//   const arr = req.body.categoryData;
+//   console.log(arr, "aaa");
+//   categorytable.insertMany(arr);
 
  
-  try {
-    // const dataToSave = await data.save();
-    res.status(200).send({ success: true });
-  } catch (error) {
-    res.status(400).send({ message: error.message });
-  }
-});
+//   try {
+//     // const dataToSave = await data.save();
+//     res.status(200).send({ success: true });
+//   } catch (error) {
+//     res.status(400).send({ message: error.message });
+//   }
+// });
+ 
+///   category  api  next plain 
+
+
+server.post("/api/category",async(req,res)=>{
+  
+ 
+try {
+  res.send(productsjson)
+} catch (error) {
+  
+  res.status(400).send({ message: error.message });
+}
+
+})
+
+
+
+
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
