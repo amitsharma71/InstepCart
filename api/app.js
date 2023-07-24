@@ -13,6 +13,7 @@ const userproducts = require("./models/ProductsSchema");
 dotenv.config();
 
 const DB =
+  // "mongodb+srv://amit71instep:Amit123@cluster0.kmujczi.mongodb.net/?retryWrites=true&w=majority";
   "mongodb+srv://noutiyalgopal:MDgopal87@cluster0.mo1orsr.mongodb.net/instepcart-backend?retryWrites=true&w=majority";
 mongoose
   .connect(DB)

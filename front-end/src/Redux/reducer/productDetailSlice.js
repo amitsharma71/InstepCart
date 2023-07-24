@@ -1,30 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signUpAction } from "../action/signUpAction";
+import { productAction } from "../action/productAction";
 
 const initialState = {
   isLoading: false,
   listdata: [],
   error: "",
 };
-const registrationData = createSlice({
-  name: "joblisting",
+const ProductDetail = createSlice({
+  name: "Product",
   initialState,
 
   extraReducers: (bulider) => {
-    bulider.addCase(signUpAction.pending, (state, action) => {
+    bulider.addCase(productAction.pending, (state, action) => {
       state.isLoading = true;
       state.error = null;
     });
-    bulider.addCase(signUpAction.fulfilled, (state, action) => {
+    bulider.addCase(productAction.fulfilled, (state, action) => {
       state.isLoading = false;
       state.listdata = action?.payload;
       state.error = "";
     });
-    bulider.addCase(signUpAction.rejected, (state, action) => {
+    bulider.addCase(productAction.rejected, (state, action) => {
       state.error = "";
       state.isLoading = false;
     });
   },
 });
 
-export default registrationData.reducer;
+export default ProductDetail.reducer;
