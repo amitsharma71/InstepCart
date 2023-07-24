@@ -149,14 +149,17 @@ const Home = () => {
                         <Link to={`/productdetail/${e?.id}`} key={e.id}>
                           <Card className="shopping_card">
                             <div className="img_div">
-                              <Card.Img variant="top" src={e.image} />
+                              <Card.Img
+                                variant="top"
+                                src={e.image || e.thumbnail}
+                              />
                             </div>
                             <Card.Body>
                               <div className="item_rating">
                                 <p>
                                   {" "}
                                   <Badge className="badge" bg="danger">
-                                    {e.rating.rate}
+                                    {e?.rating?.rate}
                                   </Badge>
                                 </p>
                                 <p>

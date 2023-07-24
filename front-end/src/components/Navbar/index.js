@@ -30,6 +30,10 @@ const Navbaar = () => {
     navigate("/likeitem");
   };
 
+  const SignClick = () => {
+    navigate("/login");
+  };
+
   const cartClick = () => {
     navigate("/addcart");
   };
@@ -81,7 +85,9 @@ const Navbaar = () => {
                     <BsHeart />
                   </span>
                   <img onClick={cartClick} src="/Image/cart.png" alt="cart" />
-                  <p className="sign_hover">Sign In</p>
+                  <p onClick={SignClick} className="sign_hover">
+                    Sign In
+                  </p>
                 </div>
               </div>
               <Navbar.Toggle
@@ -123,7 +129,7 @@ const Navbaar = () => {
             }}
             onMouseOut={hideMessage}
           >
-            <p >MOBILE & MORE</p>
+            <p>MOBILE & MORE</p>
 
             {showMessage.MOBILE && (
               <Container>
@@ -199,7 +205,7 @@ const Navbaar = () => {
             }}
             onMouseOut={hideMessage}
           >
-              <p>HOME & KITCHEN</p>
+            <p>HOME & KITCHEN</p>
 
             {showMessage.HOMEKITCHEN && (
               <Container>
@@ -268,7 +274,7 @@ const Navbaar = () => {
         </div>
       </div>
       <div>
-        <ScrollingCarousel
+        {/* <ScrollingCarousel
           className="promo"
           show={5.5}
           slide={4}
@@ -283,7 +289,7 @@ const Navbaar = () => {
           <p>Kitchen & Dinning</p>
           <p>Audio & Headphones</p>
           <p>Bags & Luggage</p>
-        </ScrollingCarousel>
+        </ScrollingCarousel> */}
       </div>
     </>
   );

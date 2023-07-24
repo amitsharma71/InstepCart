@@ -5,21 +5,28 @@ import Col from "react-bootstrap/Col";
 import { Field, Form } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../Redux/action/loginAction";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const res = useSelector(
     (state) => state?.logindatacheck?.listdata?.tokenuigiugitygtyigtyi
   );
-  console.log(res, "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 
   const onSubmit = (values) => {
     dispatch(loginAction(values));
-    console.log(values, "sssssssssss");
 
-    localStorage.setItem("token", res);
+    if (!isLoading && res !== undefined) {
+      localStorage.setItem("token", res);
+      window.location.reload();
+      navigate("");
+    }
   };
+  const isLoading = useSelector((state) => state?.logindatacheck?.isLoading);
+  console.log(isLoading, "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+  console.log(res, "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
 
   const validate = (values) => {
     const errors = {};
