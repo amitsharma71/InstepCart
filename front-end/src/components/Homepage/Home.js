@@ -5,7 +5,15 @@ import { Card, Row, Col, Badge } from "react-bootstrap";
 
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
-import { productAction } from "../../Redux/action/productAction";
+// import { productAction } from "../../Redux/action/productAction";
+import { getProductAction } from "../../Redux/action/getProductDetailAction";
+import { Link } from "react-router-dom";
+import {
+  BsFillBagFill,
+  BsFillGiftFill,
+  BsQuestionCircleFill,
+  BsStarHalf,
+} from "react-icons/bs";
 // import { productDetails } from "../../Redux/action/registerAction";
 
 const cardData = [
@@ -36,15 +44,11 @@ const Home = () => {
   const [apiData, setApiData] = useState();
   const [category, setCategory] = useState();
   const dispatch = useDispatch();
-  // const data = useSelector((state) => state?.register?.listdata);
-  const datwa = useSelector((state) => state);
-  console.log(datwa, "aaaaaabbbbbbbbbss");
-
-  const data = useSelector((state) => state?.productdetaildata);
-  console.log(data, "dddddddddddddaaaa");
+  const data = useSelector((state) => state?.getproductdata?.listdata);
+  console.log(data, "aaaaaabbbbbbbbbss");
 
   useEffect(() => {
-    dispatch(productAction());
+    dispatch(getProductAction());
 
     // dispatch(signUpAction());
     // dispatch(productDetails());
@@ -167,46 +171,168 @@ const Home = () => {
                   </>
                 );
               })} */}
-              {/* {data &&
+              {data &&
                 data?.map((e) => {
                   return (
                     <>
                       <Col md={2}>
-                        <Card className="shopping_card">
-                          <div className="img_div">
-                            <Card.Img variant="top" src={e.image} />
-                          </div>
-                          <Card.Body>
-                            <div className="item_rating">
-                              <p>
-                                {" "}
-                                <Badge className="badge" bg="danger">
-                                  {e.rating.rate}
-                                </Badge>
-                              </p>
-                              <p>
-                                {" "}
-                                <Badge className="badge" bg="primary">
-                                  {e.category}
-                                </Badge>
-                              </p>
+                        <Link to={`/productdetail/${e?.id}`} key={e.id}>
+                          <Card className="shopping_card">
+                            <div className="img_div">
+                              <Card.Img variant="top" src={e.image} />
                             </div>
-                            <Card.Title className="crad_text">
-                              {e.title}
-                            </Card.Title>
-                            <Card.Text className="crad_text">
-                              {e.description}
-                            </Card.Text>
-                            <p>Price {e.price}</p>
-                          </Card.Body>
-                        </Card>
+                            <Card.Body>
+                              <div className="item_rating">
+                                <p>
+                                  {" "}
+                                  <Badge className="badge" bg="danger">
+                                    {e.rating.rate}
+                                  </Badge>
+                                </p>
+                                <p>
+                                  {" "}
+                                  <Badge className="badge" bg="primary">
+                                    {e.category}
+                                  </Badge>
+                                </p>
+                              </div>
+                              <Card.Title className="crad_text">
+                                {e.title}
+                              </Card.Title>
+                              <Card.Text className="crad_text">
+                                {e.description}
+                              </Card.Text>
+                              <p>Price {e.price}</p>
+                            </Card.Body>
+                          </Card>
+                        </Link>
                       </Col>
                     </>
                   );
-                })} */}
+                })}
             </Row>
           </Col>
           {/* <Col lg={3}></Col> */}
+        </Row>
+        <Row>
+          <Row>
+            <footer>
+              <div className="top">
+                <ul>
+                  <h5>ABOUT</h5>
+                  <li>
+                    <a href="dgg">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="dgg">About Us</a>
+                  </li>
+                  <li>
+                    <a href="dg">Careers</a>
+                  </li>
+                  <li>
+                    <a href="dg">Press</a>
+                  </li>
+                </ul>
+                <ul>
+                  <h5>HELP</h5>
+                  <li>
+                    <a href="dg">Payments</a>
+                  </li>
+                  <li>
+                    <a href="dg">Shipping</a>
+                  </li>
+                  <li>
+                    <a href="dg">Cancellation & Return</a>
+                  </li>
+                  <li>
+                    <a href="dg">FAQ</a>
+                  </li>
+                  <li>
+                    <a href="dg">Report Infringment</a>
+                  </li>
+                </ul>
+                <ul>
+                  <h5>CONSUMER POLICY</h5>
+                  <li>
+                    <a href="dg">Return Policy</a>
+                  </li>
+                  <li>
+                    <a href="dg">Terms Of Use</a>
+                  </li>
+                  <li>
+                    <a href="dg">Security</a>
+                  </li>
+                  <li>
+                    <a href="dg">Privacy</a>
+                  </li>
+                  <li>
+                    <a href="dg">Sitemap</a>
+                  </li>
+                  <li>
+                    <a href="dg">Grievance Redressal</a>
+                  </li>
+                  <li>
+                    <a href="dg">EPR Compliance</a>
+                  </li>
+                </ul>
+                <ul>
+                  <h5>SOCIAL</h5>
+                  <li>Facebook</li>
+                  <li>Twitter</li>
+                  <li>Youtube</li>
+                </ul>
+                <ul className="left_border">
+                  <h5 className="text"> Mail Us:</h5>
+                  <p>
+                    mailto:instepcart@mail.com <br />
+                  </p>
+                </ul>
+                <ul>
+                  <h5> Registered Office Address:</h5>
+                  <p>
+                    {" "}
+                    Tricity Plaza, Office No. 14
+                    <br />
+                    Ground, Peer Muchalla <br />
+                    Zirakpur, Punjab 140603
+                  </p>
+                  <p className="tele">
+                    Telephone: <span>000-000-0000</span>{" "}
+                  </p>
+                </ul>
+              </div>
+              <Row>
+                <Col className="social">
+                  <i>
+                    {" "}
+                    <BsFillBagFill className="Soc_icon" />
+                    Become a Seller
+                  </i>
+                  <i>
+                    {" "}
+                    <BsStarHalf className="Soc_icon" />
+                    Advertise
+                  </i>
+                  <i>
+                    {" "}
+                    <BsFillGiftFill className="Soc_icon" />
+                    Gift Cards
+                  </i>
+                  <i>
+                    <BsQuestionCircleFill className="Soc_icon" />
+                    Help Center
+                  </i>
+                  <i> &copy; 2023 Instepcart.com</i>
+                </Col>
+              </Row>
+              {/* <div className="info">
+          <div className="legal">
+            <a href="dg">Terms & Conditions</a><a href="dg">Privacy Policy</a>
+          </div>
+          <div className="copyright">2021 Copyright &copy; Sean B</div>
+        </div> */}
+            </footer>
+          </Row>
         </Row>
       </div>
     </div>
