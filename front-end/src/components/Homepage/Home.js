@@ -5,6 +5,7 @@ import { Card, Row, Col, Badge } from "react-bootstrap";
 
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
+import { productAction } from "../../Redux/action/productAction";
 // import { productDetails } from "../../Redux/action/registerAction";
 
 const cardData = [
@@ -35,21 +36,24 @@ const Home = () => {
   const [apiData, setApiData] = useState();
   const [category, setCategory] = useState();
   const dispatch = useDispatch();
-  const data = useSelector((state) => state?.register?.listdata);
-  const datwa = useSelector((state) => state?.product?.listdata.data);
+  // const data = useSelector((state) => state?.register?.listdata);
+  const datwa = useSelector((state) => state);
   console.log(datwa, "aaaaaabbbbbbbbbss");
 
+  const data = useSelector((state) => state?.productdetaildata);
+  console.log(data, "dddddddddddddaaaa");
+
   useEffect(() => {
+    dispatch(productAction());
+
     // dispatch(signUpAction());
     // dispatch(productDetails());
-
-    fetch(`https://fakestoreapi.com/products/categories`)
-      .then((res) => res.json())
-      .then((data) => setCategory(data));
-
-    fetch(`https://fakestoreapi.com/products`)
-      .then((res) => res.json())
-      .then((data) => setApiData(data));
+    // fetch(`https://fakestoreapi.com/products/categories`)
+    //   .then((res) => res.json())
+    //   .then((data) => setCategory(data));
+    // fetch(`https://fakestoreapi.com/products`)
+    //   .then((res) => res.json())
+    //   .then((data) => setApiData(data));
   }, []);
 
   const handelChange = (e, value) => {
@@ -163,13 +167,12 @@ const Home = () => {
                   </>
                 );
               })} */}
-              {data &&
+              {/* {data &&
                 data?.map((e) => {
                   return (
                     <>
                       <Col md={2}>
                         <Card className="shopping_card">
-                          {/* <h3>{e.category}</h3> */}
                           <div className="img_div">
                             <Card.Img variant="top" src={e.image} />
                           </div>
@@ -200,7 +203,7 @@ const Home = () => {
                       </Col>
                     </>
                   );
-                })}
+                })} */}
             </Row>
           </Col>
           {/* <Col lg={3}></Col> */}

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signUpAction } from "../action/extraAction";
+import { signUpAction } from "../action/signUpAction";
 import { productDetails } from "../action/registerAction";
 
 const initialState = {
