@@ -1,13 +1,16 @@
 import React, { memo } from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const LoginLayout = () => {
-  return (
+  const token = localStorage.getItem("token");
+  return !token ? (
     <>
       <Navbar />
       <Outlet />
     </>
+  ):(
+    <Navigate to="/" />
   );
 };
 

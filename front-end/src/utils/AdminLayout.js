@@ -1,17 +1,18 @@
-import { memo } from "react";
-import React from "react";
-import Navbar from "../components/Navbar";
-
+import React, { memo } from "react";
+import { Navbar } from "react-bootstrap";
 import { Navigate, Outlet } from "react-router-dom";
-function Layout() {
+
+const AdminLayout = () => {
   const token = localStorage.getItem("token");
-  return  token ? (
+
+  return token ? (
     <>
       <Navbar />
       <Outlet />
     </>
-  ): (
+  ) : (
     <Navigate to="/login" />
   );
-}
-export default memo(Layout);
+};
+
+export default memo(AdminLayout);
