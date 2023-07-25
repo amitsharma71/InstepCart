@@ -12,8 +12,8 @@ const Login = () => {
 
   const onSubmit = (values, res) => {
     dispatch(loginAction(values)).then((response) => {
-      Token = response.payload.tokenuigiugitygtyigtyi;
-      console.log(Token);
+      Token = response?.payload?.tokenuigiugitygtyigtyi;
+      console.log(Token, "fghjhgjhjh");
       localStorage.setItem("token", JSON.stringify(Token));
       window.location.reload();
     });
