@@ -26,7 +26,7 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  image: {
+  images: {
     type: Array,
     required: true,
   },
@@ -48,6 +48,6 @@ const ProductSchema = new mongoose.Schema({
   },
 });
 ProductSchema.set("productsof", true);
-const userproducts = mongoose.model("userproducts", ProductSchema);
+const Userproducts = mongoose.model("Userproducts", ProductSchema);
 
-module.exports = userproducts;
+module.exports = Userproducts;
