@@ -13,7 +13,7 @@ import AdminLayout from "./AdminLayout";
 import ProductDetails from "../components/Product/ProductDetails";
 import Dashboard from "../admin/adminDashboard";
 
-const role = getUserId() ? getUserId()?.role : null;
+const role = getUserId() ? getUserId()?.user[0]?.role : null;
 const isLoggedIn = getToken();
 const protects = {
 

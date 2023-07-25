@@ -125,7 +125,7 @@ const Navbaar = () => {
           <div
             className="position-relative"
             onMouseOver={() => {
-              setShowMessage({ ...showMessage, MOBILE: "true" });
+              setShowMessage({ ...showMessage, MOBILE: "false" });
             }}
             onMouseOut={hideMessage}
           >
