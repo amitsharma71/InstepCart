@@ -8,9 +8,10 @@ const User = require("./models/RegisterSchema");
 const jwt = require("jsonwebtoken");
 const secretkey = "secretkey";
 const dotenv = require("dotenv");
-const userproducts = require("./models/ProductsSchema");
-const categorytable = require("./models/categorytable");
-const productsjson =require("./home")
+// const userproducts = require("./models/ProductsSchema");
+// const categorytable = require("./models/categorytable");
+const productsjson = require("./home");
+const Userproducts = require("./models/ProductsSchema");
 dotenv.config();
 
 const DB =
@@ -31,7 +32,7 @@ server.use(bodyParser.json());
 server.post("/api/register", async (req, res) => {
   const { name, email, password } = req.body;
 
-  const role = "user"; 
+  const role = "user";
   const data = new User({
     username: req.body.name,
     email: req.body.email,
@@ -66,9 +67,17 @@ server.post("/api/login", async (req, res) => {
     const LoginVeryfy =
       UserEmail[0]?.email === email && UserEmail[0]?.password === password;
     if (LoginVeryfy) {
-      const token = jwt.sign({ userEmail: UserEmail[0]?.email,userRole: UserEmail[0]?.role, userName: UserEmail[0]?.username }, secretkey, {
-        expiresIn: "8h",
-      });
+      const token = jwt.sign(
+        {
+          userEmail: UserEmail[0]?.email,
+          userRole: UserEmail[0]?.role,
+          userName: UserEmail[0]?.username,
+        },
+        secretkey,
+        {
+          expiresIn: "8h",
+        }
+      );
 
       res.json({ loginStatus: LoginVeryfy, tokenuigiugitygtyigtyi: token });
       console.log(token, "okkkkkk");
@@ -80,20 +89,32 @@ server.post("/api/login", async (req, res) => {
 
 //api of products addd
 server.post("/api/products", async (req, res) => {
-  const { category, description, title, price, image,brand, rating,subcategory, thumbnail,stock,discountPercentage} = req.body;
+  const {
+    category,
+    description,
+    title,
+    price,
+    images,
+    brand,
+    rating,
+    subcategory,
+    thumbnail,
+    stock,
+    discountPercentage,
+  } = req.body;
 
-  const data = new userproducts({
+  const data = new Userproducts({
     category: req.body.category,
     description: req.body.description,
     title: req.body.title,
     price: req.body.price,
-    image: req.body.image,
+    images: req.body.images,
     brand: req.body.brand,
     rating: req.body.rating,
-    subcategory:req.body.subcategory,
-    thumbnail:req.body.subcategory,
-    stock:req.body.stock,
-    discountPercentage:req.body.discountPercentage,
+    subcategory: req.body.subcategory,
+    thumbnail: req.body.subcategory,
+    stock: req.body.stock,
+    discountPercentage: req.body.discountPercentage,
   });
   try {
     const dataToSave = await data.save();
@@ -102,17 +123,68 @@ server.post("/api/products", async (req, res) => {
     res.status(400).send({ message: error.message });
   }
 });
-//api of products all
+//api of products all   category and subcategory,brand
 
-server.get("/api/Getproducts", async (req, resp) => {
+server.post("/api/Getproducts", async (req, resp) => {
+  const {
+    category,
+    description,
+    title,
+    price,
+    image,
+    brand,
+    rating,
+    subcategory,
+    thumbnail,
+    stock,
+    discountPercentage,
+  } = req.body;
+
+if (req.body.category) {
+  
+
+  if (req.body.category) {
+    const filter = await Userproducts.find({ category: req.body.category });
+
+    console.log(filter)
+
+    try {
+      resp.send(filter);
+    } catch (error) {
+      resp.send({ result: "no category products found" });
+    }
+  } else if (req.body.subcategory) {
+    console.log("object",req.body.subcategory)
+    const filter = await Userproducts.find({
+      subcategory: "smartphones",
+    });
+
+    console.log(filter,'filter')
+    try {
+      resp.send(filter);
+    } catch (error) {
+      resp.send({ result: "no subcategory products found" });
+    }
+  } else if (req.body.brand) {
+    const filter = await Userproducts.find({ brand: req.body.brand });
+    try {
+      resp.send(filter);
+    } catch (error) {
+      resp.send({ result: "no brand products found" });
+    }
+  }
+} else {
   console.log(req, resp, "console.log");
-  let products = await userproducts.find();
+  let products = await Userproducts.find();
 
   if (products.length > 0) {
     resp.send(products);
   } else {
     resp.send({ result: "no products found" });
   }
+}
+
+ 
 });
 
 //table addd api category
@@ -124,7 +196,6 @@ server.get("/api/Getproducts", async (req, resp) => {
 //   console.log(arr, "aaa");
 //   categorytable.insertMany(arr);
 
- 
 //   try {
 //     // const dataToSave = await data.save();
 //     res.status(200).send({ success: true });
@@ -132,25 +203,16 @@ server.get("/api/Getproducts", async (req, resp) => {
 //     res.status(400).send({ message: error.message });
 //   }
 // });
- 
-///   category  api  next plain 
 
+///   category  api  next plain
 
-server.post("/api/category",async(req,res)=>{
-  
- 
-try {
-  res.send(productsjson)
-} catch (error) {
-  
-  res.status(400).send({ message: error.message });
-}
-
-})
-
-
-
-
+server.post("/api/category", async (req, res) => {
+  try {
+    res.send(productsjson);
+  } catch (error) {
+    res.status(400).send({ message: error.message });
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
