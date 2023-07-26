@@ -11,9 +11,14 @@ import { useState } from "react";
 import ListMobile from "./ListDetails/List";
 import { useNavigate } from "react-router";
 import { BsHeart } from "react-icons/bs";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 
 const Navbaar = () => {
   const navigate = useNavigate();
+
+  const userLogin = localStorage.getItem("token");
+  console.log(userLogin, "userLogin");
+
   const [showMessage, setShowMessage] = useState({
     MOBILE: "false",
     MEN: "false",
@@ -30,8 +35,9 @@ const Navbaar = () => {
     navigate("/likeitem");
   };
 
-  const SignClick = () => {
+  const SignClick = (e) => {
     navigate("/login");
+    console.log(e, "SignClick");
   };
 
   const cartClick = () => {
@@ -72,23 +78,61 @@ const Navbaar = () => {
                   {/* <p className="share ">
                     share
                     <span>location</span>
-                  </p>
-                  <img src="/Image/location.png" alt="location" />
-                  <span>
+                  </p> */}
+                  {/* <img src="/Image/location.png" alt="location" /> */}
+                  {/* <span>
                     <img
                       onClick={notificationClick}
                       src="/Image/notification.png"
                       alt="notification"
                     />
-                  </span>
-                  <span onClick={heartClick}>
+                  </span> */}
+                  {/* <span onClick={heartClick}>
                     <BsHeart />
                   </span> */}
                   <img onClick={cartClick} src="/Image/cart.png" alt="cart" />
-
-                  <p onClick={SignClick} className="sign_hover">
+                  {/* <p onClick={SignClick} className="sign_hover">
                     Sign In
-                  </p>
+                  </p> */}
+                  {userLogin ? (
+                    <DropdownButton
+                      id="dropdown-basic-button"
+                      title="Dropdown button"
+                    >
+                      <Dropdown.Item href="#/action-1">
+                        <span onClick={() => notificationClick()}>
+                          <img
+                            src="/Image/notification.png"
+                            alt="notification"
+                          />
+                          Notification
+                        </span>
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-2">as</Dropdown.Item>
+                      <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+                    </DropdownButton>
+                  ) : (
+                    <DropdownButton
+                      id="dropdown-basic-button"
+                      title="Dropdown button"
+                    >
+                      <Dropdown.Item href="#/action-1">
+                        <span onClick={() => notificationClick()}>
+                          <img
+                            src="/Image/notification.png"
+                            alt="notification"
+                          />
+                          Notification
+                        </span>
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-2">
+                        <p onClick={SignClick} className="sign_hover">
+                          Sign In
+                        </p>
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+                    </DropdownButton>
+                  )}
                 </div>
               </div>
               <Navbar.Toggle
@@ -242,7 +286,6 @@ const Navbaar = () => {
                       className="mouseoverdiv"
                       style={{ backgroundColor: "white" }}
                     >
-                      {" "}
                       women
                     </div>
                   </Col>
@@ -344,7 +387,6 @@ const Navbaar = () => {
             <p>Bags & Luggage</p>
         </ScrollingCarousel>
       </div> */}
-
     </>
   );
 };

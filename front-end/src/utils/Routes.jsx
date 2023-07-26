@@ -23,6 +23,7 @@ const protects = {
       element: isLoggedIn ? <Layout /> : <Navigate to="/" />,
       children: [
         { path: "/", element: <Home /> },
+        // { path: "/login", element: <Login /> },
         { path: "/addcart", element: <AddtoCart /> },
         { path: "/notification", element: <Notification /> },
         { path: "/likeitem", element: <LikeItem /> },
@@ -37,8 +38,9 @@ const protects = {
       element: isLoggedIn ? <AdminLayout /> : <Navigate to="/" />,
       children: [
         { path: "/", element: <Dashboard /> },
-        { path: "/createlogin", element: <CreateLogin /> },
-        { path: "/addcart", element: <AddtoCart /> },
+        // { path: "/createlogin", element: <CreateLogin /> },
+        // { path: "/addcart", element: <AddtoCart /> },
+        // { path: "/login", element: <Login /> },
         { path: "/notification", element: <Notification /> },
         { path: "/likeitem", element: <LikeItem /> },
         { path: "/productdetail/:id", element: <ProductDetails /> },
