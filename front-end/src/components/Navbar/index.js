@@ -60,7 +60,7 @@ const Navbaar = () => {
           <Navbar
             key={expand}
             expand={expand}
-            className="bg-body-tertiary mb-3"
+            className="bg-body-tertiary py-4"
           >
             <Container fluid className="">
               <div className="nav_bar w-100">
@@ -167,6 +167,57 @@ const Navbaar = () => {
           </Navbar>
         ))}
         <div className="sales-navbar sub_header_hide">
+          <div class="Nav_link">
+            MOBILE & MORE
+            <div>
+              <ul className="nav_Filter">
+                <li> Mobile & More content...</li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            MEN
+            <div>
+              <ul className="nav_Filter">
+                <li> Men content...</li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            WOMEN
+            <div>
+              <ul className="nav_Filter">
+                <li>Women content...</li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            HOME & KITCHEN
+            <div>
+              <ul className="nav_Filter">
+                <li> Home & Kitchen content...</li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            APPLIANCES
+            <div>
+              <ul className="nav_Filter">
+                <li> Appliances content...</li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            SPORTS & MORE
+            <div>
+              <ul className="nav_Filter">
+                <li> Sports & More content...</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {/* <div className="sales-navbar sub_header_hide">
           <div
             className="position-relative"
             onMouseOver={() => {
@@ -315,8 +366,27 @@ const Navbaar = () => {
               </Container>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
+      {/* <div>
+        <ScrollingCarousel
+
+          className="promo"
+          show={5.5}
+          slide={4}
+          swiping={true}
+        >
+            <p>Jaw Dropping Deals</p>
+            <p>Refurbished Mobile</p>
+            <p>Express Shipping</p>
+            <p>Men's Clothing</p>
+            <p>Women's Fashion</p>
+            <p>Footwear</p>
+            <p>Kitchen & Dinning</p>
+            <p>Audio & Headphones</p>
+            <p>Bags & Luggage</p>
+        </ScrollingCarousel>
+      </div> */}
     </>
   );
 };
