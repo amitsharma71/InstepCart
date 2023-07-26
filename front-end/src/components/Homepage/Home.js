@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { signUpAction } from "../../Redux/action/signUpAction";
 import { Card, Row, Col, Badge } from "react-bootstrap";
-
 import { useNavigate } from "react-router";
 import { Carousel } from "react-bootstrap";
-
 // import { productAction } from "../../Redux/action/productAction";
 import { getProductAction } from "../../Redux/action/getProductDetailAction";
 import { Link } from "react-router-dom";

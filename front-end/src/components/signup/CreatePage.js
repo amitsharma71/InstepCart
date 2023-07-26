@@ -1,71 +1,76 @@
 import React, { useEffect } from "react";
-import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Form, Field } from "react-final-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { registerAction } from "../../Redux/action/registerAction";
+import { useNavigate } from "react-router-dom";
 
 const Registeration = () => {
   let array = [];
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
   // const details = useSelector((state) => state);
   // console.log(details, "detailssssaaaa");
-    
+
   const registerData = {
-    username: "amit",
-    email: "abc@gmail.com",
-    password: "abc1234",
+    username: "",
+    email: "",
+    password: "",
   };
-  useEffect(() => {
-    dispatch(registerAction(registerData));
-  }, []);
+  useEffect(() => {}, []);
   const onSubmit = (values) => {
-    if (values) {
-      let data = localStorage.getItem("items");
-      if (data) {
-        let details = JSON.parse(data);
-        // Check if email already exists
-        const existEmail = details.find((item) => item.Email === values.Email);
-        if (existEmail) {
-          alert("Email already exists!");
-          return;
-        }
-        details.push(values);
-        localStorage.setItem("items", JSON.stringify(details));
-        JSON.parse(localStorage.getItem("item"));
-      } else {
-        localStorage.setItem("items", JSON.stringify([values]));
-      }
-    }
-    alert("Saved");
+    dispatch(registerAction(values));
+
+    console.log(values, "initialValues");
+    // if (values) {
+    //   let data = localStorage.getItem("items");
+    //   if (data) {
+    //     let details = JSON.parse(data);
+    //     // Check if email already exists
+    //     const existEmail = details.find((item) => item.Email === values.Email);
+    //     if (existEmail) {
+    //       alert("Email already exists!");
+    //       return;
+    //     }
+    //     details.push(values);
+    //     localStorage.setItem("items", JSON.stringify(details));
+    //     JSON.parse(localStorage.getItem("item"));
+    //   } else {
+    //     localStorage.setItem("items", JSON.stringify([values]));
+    //   }
+    // }
+    // alert("Saved");
   };
 
   const validate = (values) => {
     const errors = {};
-    if (!values.Name) {
-      errors.Name = "Please enter a valid name";
-    }
-    if (!values.Email) {
-      errors.Email = "Please enter a valid email";
-    }
-    if (!values.Password) {
-      errors.Password = "Please enter a valid Password";
+    //   if (!values.Name) {
+    //     errors.Name = "Please enter a valid name";
+    //   }
+    //   if (!values.Email) {
+    //     errors.Email = "Please enter a valid email";
+    //   }
+    if (!values.password) {
+      errors.password = "Please enter a valid Password";
     }
     if (!values.confirmpassword) {
       errors.confirmpassword = "Please Confirm your password";
-    } else if (values.confirmpassword !== values.Password) {
+    } else if (values.confirmpassword !== values.password) {
       errors.confirmpassword = "Must match";
     }
     return errors;
   };
   const initialValues = {
-    Name: "",
-    Email: "",
-    Password: "",
+    username: "",
+    email: "",
+    password: "",
     confirmpassword: "",
+  };
+  const goToClick = () => {
+    navigate("/login");
   };
 
   return (
@@ -73,14 +78,14 @@ const Registeration = () => {
       <div className="main_page">
         <Row>
           <Col md={4} className="signup">
-            <div className="left_content" >
+            <div className="left_content">
               <h2>Looks Like You're new here!</h2>
               <p>sign up with your mobile number to get started</p>
               <img src="/image/pngwing.com.png" />
             </div>
           </Col>
           <Col md={8}>
-            <div class="right_content">
+            <div className="right_content">
               <Form
                 onSubmit={onSubmit}
                 initialValues={initialValues}
@@ -93,11 +98,12 @@ const Registeration = () => {
                   values,
                 }) => (
                   <form onSubmit={handleSubmit}>
-                    <Field name="Name">
+                    <Field name="username">
                       {({ input, meta }) => (
                         <div className="mb-4">
                           {/* <label>Your name</label> */}
-                          <input className="login_input"
+                          <input
+                            className="login_input"
                             {...input}
                             type="text"
                             placeholder="First and last name"
@@ -108,11 +114,12 @@ const Registeration = () => {
                         </div>
                       )}
                     </Field>
-                    <Field name="Email">
+                    <Field name="email">
                       {({ input, meta }) => (
                         <div className="mb-4">
                           {/* <label>Email</label> */}
-                          <input className="login_input"
+                          <input
+                            className="login_input"
                             {...input}
                             type="email"
                             placeholder="Email"
@@ -123,11 +130,12 @@ const Registeration = () => {
                         </div>
                       )}
                     </Field>
-                    <Field name="Password">
+                    <Field name="password">
                       {({ input, meta }) => (
                         <div className="mb-4">
                           {/* <label>Password</label> */}
-                          <input className="login_input"
+                          <input
+                            className="login_input"
                             {...input}
                             type="password"
                             placeholder="Password"
@@ -142,11 +150,11 @@ const Registeration = () => {
                       {({ input, meta }) => (
                         <div className="mb-4">
                           {/* <label>Confirm</label> */}
-                          <input className="login_input"
+                          <input
+                            className="login_input"
                             {...input}
                             type="password"
                             placeholder="Confirm Password"
-
                           />
                           {meta.error && meta.touched && (
                             <p className="star">{meta.error}</p>
@@ -155,13 +163,16 @@ const Registeration = () => {
                       )}
                     </Field>
                     <div className="button_div ">
-                      <button className="des-but" type="submit ">Continue</button>
-                      <button className="reset_button"
+                      <button className="des-but" type="submit ">
+                        Continue
+                      </button>
+                      <button
+                        className="reset_button"
                         type="button"
-                        onClick={form.reset}
-                        disabled={submitting || pristine}
+                        onClick={() => goToClick()}
+                        // disabled={submitting || pristine}
                       >
-                        Reset
+                        Already have an Account
                       </button>
                     </div>
                   </form>

@@ -17,6 +17,7 @@ const Login = () => {
       localStorage.setItem("token", JSON.stringify(Token));
       window.location.reload();
     });
+
   };
   const res = useSelector((state) => state?.logindatacheck?.listdata);
   let Token;
@@ -63,7 +64,7 @@ const Login = () => {
               </div>
             </Col>
             <Col md={6}>
-              <div class="right_content">
+              <div className="right_content">
                 <Form
                   onSubmit={onSubmit}
                   initialValues={initialValues}
