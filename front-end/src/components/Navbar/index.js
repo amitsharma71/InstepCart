@@ -30,6 +30,10 @@ const Navbaar = () => {
     navigate("/likeitem");
   };
 
+  const SignClick = () => {
+    navigate("/login");
+  };
+
   const cartClick = () => {
     navigate("/addcart");
   };
@@ -81,7 +85,10 @@ const Navbaar = () => {
                     <BsHeart />
                   </span> */}
                   <img onClick={cartClick} src="/Image/cart.png" alt="cart" />
-                  {/* <p className="sign_hover">Sign In</p> */}
+
+                  <p onClick={SignClick} className="sign_hover">
+                    Sign In
+                  </p>
                 </div>
               </div>
               <Navbar.Toggle
@@ -170,7 +177,7 @@ const Navbaar = () => {
           <div
             className="position-relative"
             onMouseOver={() => {
-              setShowMessage({ ...showMessage, MOBILE: "true" });
+              setShowMessage({ ...showMessage, MOBILE: "false" });
             }}
             onMouseOut={hideMessage}
           >
@@ -320,6 +327,7 @@ const Navbaar = () => {
       </div>
       {/* <div>
         <ScrollingCarousel
+
           className="promo"
           show={5.5}
           slide={4}
@@ -336,6 +344,7 @@ const Navbaar = () => {
             <p>Bags & Luggage</p>
         </ScrollingCarousel>
       </div> */}
+
     </>
   );
 };

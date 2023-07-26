@@ -1,25 +1,28 @@
 import React, { useEffect } from "react";
-import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Field, Form } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../Redux/action/loginAction";
+import { json, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const res = useSelector(
-    (state) => state?.logindatacheck?.listdata?.tokenuigiugitygtyigtyi
-  );
-  console.log(res, "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-
-  const onSubmit = (values) => {
-    dispatch(loginAction(values));
-    console.log(values, "sssssssssss");
-
-    localStorage.setItem("token", res);
+  const onSubmit = (values, res) => {
+    dispatch(loginAction(values)).then((response) => {
+      Token = response?.payload?.tokenuigiugitygtyigtyi;
+      console.log(Token, "fghjhgjhjh");
+      localStorage.setItem("token", JSON.stringify(Token));
+      window.location.reload();
+    });
   };
+  const res = useSelector((state) => state?.logindatacheck?.listdata);
+  let Token;
+  console.log(res, "fghjkjhgfghjkjhgfd");
+  const isLoading = useSelector((state) => state?.logindatacheck);
+  console.log(isLoading, "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqaaa");
 
   const validate = (values) => {
     const errors = {};
@@ -36,6 +39,10 @@ const Login = () => {
     //   errors.confirmpassword = "Must match";
     // }
     return errors;
+  };
+
+  const logClick = () => {
+    navigate("/createlogin");
   };
   const initialValues = {
     email: "",
@@ -119,7 +126,7 @@ const Login = () => {
                 />
               </div>
               <div className="create_accnt">
-                <a href="db">New to Instepcart? Create an account</a>
+                <a onClick={logClick} href="db">New to Instepcart? Create an account</a>
               </div>
             </Col>
           </Row>

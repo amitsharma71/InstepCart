@@ -11,25 +11,23 @@ import Layout from "./Layout";
 import { Navigate } from "react-router-dom";
 import AdminLayout from "./AdminLayout";
 import ProductDetails from "../components/Product/ProductDetails";
+import Dashboard from "../admin/adminDashboard";
 
-const role = getUserId() ? getUserId()?.user?.role : null;
+const role = getUserId() ? getUserId()?.userRole : null;
+console.log(role, "aaasdfgfds");
 const isLoggedIn = getToken();
 const protects = {
-
-  client: [
+  user: [
     {
       path: "/",
       element: isLoggedIn ? <Layout /> : <Navigate to="/" />,
       children: [
-
         { path: "/", element: <Home /> },
-        { path: "/login", element: <Login /> },
-        { path: "/createlogin", element: <CreateLogin /> },
         { path: "/addcart", element: <AddtoCart /> },
         { path: "/notification", element: <Notification /> },
         { path: "/likeitem", element: <LikeItem /> },
         { path: "/productdetail/:id", element: <ProductDetails /> },
-        { path: "*", element: "NO PAGE FOUND" }
+        { path: "*", element: "NO PAGE FOUND" },
       ],
     },
   ],
@@ -38,14 +36,13 @@ const protects = {
       path: "/",
       element: isLoggedIn ? <AdminLayout /> : <Navigate to="/" />,
       children: [
-        { path: "/", element: <Home /> },
-        { path: "/login", element: <Login /> },
+        { path: "/", element: <Dashboard /> },
         { path: "/createlogin", element: <CreateLogin /> },
         { path: "/addcart", element: <AddtoCart /> },
         { path: "/notification", element: <Notification /> },
         { path: "/likeitem", element: <LikeItem /> },
         { path: "/productdetail/:id", element: <ProductDetails /> },
-        { path: "*", element: "NO PAGE FOUND" }
+        { path: "*", element: "NO PAGE FOUND" },
       ],
     },
   ],
@@ -63,11 +60,11 @@ const protects = {
         { path: "/notification", element: <Notification /> },
         { path: "/likeitem", element: <LikeItem /> },
         { path: "/productdetail/:id", element: <ProductDetails /> },
-        { path: "*", element: "NO PAGE FOUND" }
+        { path: "*", element: "NO PAGE FOUND" },
       ],
     },
-  ]
-}
+  ],
+};
 
 export const protect =
   role && isLoggedIn ? protects[role] : protects["default"];

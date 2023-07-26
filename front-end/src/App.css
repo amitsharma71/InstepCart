@@ -87,7 +87,7 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width: 500px) {
   .search_button {
     display: none;
   }
@@ -238,25 +238,33 @@ p {
   width: auto !important;
 }
 
-.carousel-control-next-icon{
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+.carousel-control-next-icon {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   padding: 90px 30px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-.carousel-control-prev-icon{
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+.carousel-control-prev-icon {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   padding: 90px 30px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-.carousel-control-prev{
+.carousel-control-prev {
   width: auto !important;
 }
 
-.carousel-indicators{
+.carousel-indicators {
   display: none;
 }
 
@@ -307,7 +315,6 @@ p {
 .view_all_card {
   padding: 20px;
   cursor: pointer;
-
 }
 .right_arrow {
   max-width: 200px;
@@ -392,7 +399,6 @@ p {
   line-height: 45px;
   color: #fff;
 }
-
 
 .left_content p {
   font-size: 18px;
@@ -505,10 +511,6 @@ a {
   color: rgb(231, 231, 231);
   text-decoration: none;
 }
-
-
-
-
 
 /* ------------------------------------toggle--------------------------------------------------- */
 
