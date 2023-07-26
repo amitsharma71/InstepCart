@@ -119,7 +119,7 @@ const Login = () => {
                 />
               </div>
               <div className="create_accnt">
-                <a href="#">New to Instepcart? Create an account</a>
+                <a href="db">New to Instepcart? Create an account</a>
               </div>
             </Col>
           </Row>
