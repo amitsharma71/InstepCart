@@ -77,44 +77,41 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <div className="container-fluid  slider_col">
-        <Row>
-          <Col md={12}>
-            <div className="slider">
-              <Carousel className="">
-                <Carousel.Item interval={1000}>
-                  <img
-                    className="slide_img"
-                    src=" https://itechbahrain.com/wp-content/uploads/2020/05/eletro.jpg"
-                    alt="First slide"
-                  />
-                  <Carousel.Caption></Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item interval={500}>
-                  <img
-                    className="slide_img"
-                    src="https://www.axelaccessories.com/media/homepage/2023/Sliders/03_SALE_NEW_40_-_TOP_SLIDER_-_1920X700_SS23.jpg"
-                    alt="Second slide"
-                  />
-                  <Carousel.Caption></Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="slide_img"
-                    src="https://clotya.co.uk/wp-content/uploads/2023/02/Banner-1-1.jpg"
-                    alt="Third slide"
-                  />
-                  <Carousel.Caption></Carousel.Caption>
-                </Carousel.Item>
-              </Carousel>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col lg={12}>
-            <Row>
-              {/* {apiData &&
+    <>
+      <div>
+        <div className=" slider_col">
+          <div className="slider">
+            <Carousel className="">
+              <Carousel.Item interval={1000}>
+                <img
+                  className="slide_img"
+                  src=" https://itechbahrain.com/wp-content/uploads/2020/05/eletro.jpg"
+                  alt="First slide"
+                />
+                <Carousel.Caption></Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item interval={500}>
+                <img
+                  className="slide_img"
+                  src="https://www.axelaccessories.com/media/homepage/2023/Sliders/03_SALE_NEW_40_-_TOP_SLIDER_-_1920X700_SS23.jpg"
+                  alt="Second slide"
+                />
+                <Carousel.Caption></Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="slide_img"
+                  src="https://clotya.co.uk/wp-content/uploads/2023/02/Banner-1-1.jpg"
+                  alt="Third slide"
+                />
+                <Carousel.Caption></Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
+          </div>
+          <Row>
+            <Col lg={12}>
+              <Row>
+                {/* {apiData &&
               apiData?.map((e) => {
                 return (
                   <>
@@ -169,147 +166,164 @@ const Home = () => {
                                   </Badge>
                                 </p>
                               </div>
-                              <Card.Title className="crad_text">
-                                {e.title}
-                              </Card.Title>
-                              <Card.Text className="crad_text">
-                                {e.description}
-                              </Card.Text>
-                              <p>Price {e.price}</p>
-                            </Card.Body>
-                          </Card>
-                        </Link>
-                      </Col>
-                    </>
-                  );
-                })}
-            </Row>
-          </Col>
-          <Col lg={3}></Col>
-        </Row>
-
-        <Row>
-          <Row>
-            <footer>
-              <div className="top">
-                <ul>
-                  <h5>ABOUT</h5>
-                  <li>
-                    <a href="dgg">Contact Us</a>
-                  </li>
-                  <li>
-                    <a href="dgg">About Us</a>
-                  </li>
-                  <li>
-                    <a href="dg">Careers</a>
-                  </li>
-                  <li>
-                    <a href="dg">Press</a>
-                  </li>
-                </ul>
-                <ul>
-                  <h5>HELP</h5>
-                  <li>
-                    <a href="dg">Payments</a>
-                  </li>
-                  <li>
-                    <a href="dg">Shipping</a>
-                  </li>
-                  <li>
-                    <a href="dg">Cancellation & Return</a>
-                  </li>
-                  <li>
-                    <a href="dg">FAQ</a>
-                  </li>
-                  <li>
-                    <a href="dg">Report Infringment</a>
-                  </li>
-                </ul>
-                <ul>
-                  <h5>CONSUMER POLICY</h5>
-                  <li>
-                    <a href="dg">Return Policy</a>
-                  </li>
-                  <li>
-                    <a href="dg">Terms Of Use</a>
-                  </li>
-                  <li>
-                    <a href="dg">Security</a>
-                  </li>
-                  <li>
-                    <a href="dg">Privacy</a>
-                  </li>
-                  <li>
-                    <a href="dg">Sitemap</a>
-                  </li>
-                  <li>
-                    <a href="dg">Grievance Redressal</a>
-                  </li>
-                  <li>
-                    <a href="dg">EPR Compliance</a>
-                  </li>
-                </ul>
-                <ul>
-                  <h5>SOCIAL</h5>
-                  <li>Facebook</li>
-                  <li>Twitter</li>
-                  <li>Youtube</li>
-                </ul>
-                <ul className="left_border">
-                  <h5 className="text"> Mail Us:</h5>
-                  <p>
-                    mailto:instepcart@mail.com <br />
-                  </p>
-                </ul>
-                <ul>
-                  <h5> Registered Office Address:</h5>
-                  <p>
-                    {" "}
-                    Tricity Plaza, Office No. 14
-                    <br />
-                    Ground, Peer Muchalla <br />
-                    Zirakpur, Punjab 140603
-                  </p>
-                  <p className="tele">
-                    Telephone: <span>000-000-0000</span>{" "}
-                  </p>
-                </ul>
-              </div>
-              <Row>
-                <Col className="social">
-                  <i>
-                    {" "}
-                    <BsFillBagFill className="Soc_icon" />
-                    Become a Seller
-                  </i>
-                  <i>
-                    {" "}
-                    <BsStarHalf className="Soc_icon" />
-                    Advertise
-                  </i>
-                  <i>
-                    {" "}
-                    <BsFillGiftFill className="Soc_icon" />
-                    Gift Cards
-                  </i>
-                  <i>
-                    <BsQuestionCircleFill className="Soc_icon" />
-                    Help Center
-                  </i>
-                  <i> &copy; 2023 Instepcart.com</i>
-                </Col>
+                              <Card.Body>
+                                <div className="item_rating">
+                                  <p>
+                                    {" "}
+                                    <Badge className="badge" bg="danger">
+                                      {e.rating.rate}
+                                    </Badge>
+                                  </p>
+                                  <p>
+                                    {" "}
+                                    <Badge className="badge" bg="primary">
+                                      {e.category}
+                                    </Badge>
+                                  </p>
+                                </div>
+                                <Card.Title className="crad_text">
+                                  {e.title}
+                                </Card.Title>
+                                <Card.Text className="crad_text">
+                                  {e.description}
+                                </Card.Text>
+                                <Card.Text className="crad_text">
+                                  <h5> ₹ {e.price}</h5>
+                                </Card.Text>
+                              </Card.Body>
+                            </Card>
+                          </Link>
+                        </Col>
+                      </>
+                    );
+                  })}
               </Row>
-              {/* <div className="info">
+            </Col>
+            <Col lg={3}></Col>
+          </Row>
+        </div>
+      </div>
+      <div className="container-fluid">
+        <Row>
+          <footer>
+            <div className="top">
+              <ul>
+                <h5>ABOUT</h5>
+                <li>
+                  <a href="dgg">Contact Us</a>
+                </li>
+                <li>
+                  <a href="dgg">About Us</a>
+                </li>
+                <li>
+                  <a href="dg">Careers</a>
+                </li>
+                <li>
+                  <a href="dg">Press</a>
+                </li>
+              </ul>
+              <ul>
+                <h5>HELP</h5>
+                <li>
+                  <a href="dg">Payments</a>
+                </li>
+                <li>
+                  <a href="dg">Shipping</a>
+                </li>
+                <li>
+                  <a href="dg">Cancellation & Return</a>
+                </li>
+                <li>
+                  <a href="dg">FAQ</a>
+                </li>
+                <li>
+                  <a href="dg">Report Infringment</a>
+                </li>
+              </ul>
+              <ul>
+                <h5>CONSUMER POLICY</h5>
+                <li>
+                  <a href="dg">Return Policy</a>
+                </li>
+                <li>
+                  <a href="dg">Terms Of Use</a>
+                </li>
+                <li>
+                  <a href="dg">Security</a>
+                </li>
+                <li>
+                  <a href="dg">Privacy</a>
+                </li>
+                <li>
+                  <a href="dg">Sitemap</a>
+                </li>
+                <li>
+                  <a href="dg">Grievance Redressal</a>
+                </li>
+                <li>
+                  <a href="dg">EPR Compliance</a>
+                </li>
+              </ul>
+              <ul>
+                <h5>SOCIAL</h5>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Youtube</li>
+              </ul>
+              <ul className="left_border">
+                <h5 className="text"> Mail Us:</h5>
+                <p>
+                  mailto:instepcart@mail.com <br />
+                </p>
+              </ul>
+              <ul>
+                <h5> Registered Office Address:</h5>
+                <p>
+                  {" "}
+                  Tricity Plaza, Office No. 14
+                  <br />
+                  Ground, Peer Muchalla <br />
+                  Zirakpur, Punjab 140603
+                </p>
+                <p className="tele">
+                  Telephone: <span>000-000-0000</span>{" "}
+                </p>
+              </ul>
+            </div>
+            <Row>
+              <Col className="social">
+                <i>
+                  {" "}
+                  <BsFillBagFill className="Soc_icon" />
+                  Become a Seller
+                </i>
+                <i>
+                  {" "}
+                  <BsStarHalf className="Soc_icon" />
+                  Advertise
+                </i>
+                <i>
+                  {" "}
+                  <BsFillGiftFill className="Soc_icon" />
+                  Gift Cards
+                </i>
+                <i>
+                  <BsQuestionCircleFill className="Soc_icon" />
+                  Help Center
+                </i>
+                <i> &copy; 2023 Instepcart.com</i>
+              </Col>
+            </Row>
+            {/* <div className="info">
           <div className="legal">
             <a href="dg">Terms & Conditions</a><a href="dg">Privacy Policy</a>
           </div>
           <div className="copyright">2021 Copyright &copy; Sean B</div>
         </div> */}
-            </footer>
-          </Row>
+          </footer>
         </Row>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -126,9 +126,7 @@ const Login = () => {
                 />
               </div>
               <div className="create_accnt">
-                <a onClick={logClick} href="#">
-                  New to Instepcart? Create an account
-                </a>
+                <a onClick={logClick} href="db">New to Instepcart? Create an account</a>
               </div>
             </Col>
           </Row>

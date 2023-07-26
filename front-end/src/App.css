@@ -35,24 +35,32 @@
   height: 25px;
 }
 .search_bar {
-  max-height: 57px;
+  max-height: 56px;
   width: 100%;
-  padding: 15px 25px;
   border: 1px solid gray;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border: 0;
   font-size: 18px;
-  background-color: #e9f6f7;
+  background-color: #e1e9ea;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
+.search_bar:focus{
+  box-shadow: none;
+  background-color: #d1e0f9;
+}
+
+/* .form-control:focus{
+  outline-offset: 0px !important;
+  padding: 10px 28px !important;
+} */
 .nav_bar {
   display: flex !important;
   flex-wrap: nowrap;
   justify-content: space-between !important;
-  padding: 0px 10px;
+  padding: 0px;
 }
 
 .hide_links {
@@ -127,16 +135,19 @@ img {
 }
 
 .sales-navbar {
-  background-color: #2874f0;
+  background-color: #0f336d;
   display: flex;
   justify-content: center;
   gap: 19px;
   font-weight: 700;
   padding: 0 10px;
+  position: relative;
+
 }
 
 p {
   cursor: pointer;
+  margin-bottom: 0px;
 }
 
 .sales-navbar p {
@@ -167,7 +178,45 @@ p {
   background-color: #eff7fa;
 }
 
-/* ---------------Navbar-css------------------- */
+/* ------------------------------------------Navbar-css--------------------------------------------- */
+
+
+/* ----------------------------------------Nav_link css--------------------------------------------- */
+
+
+.Nav_link {
+  padding: 10px;
+  color: white;
+  margin-right: 20px;
+}
+.Nav_link:hover{
+  background-color: white;
+  color: #0f336d;
+}
+.nav_Filter {
+  padding: 10px;
+  margin-bottom: 0;
+  color: #000;
+}
+
+.Nav_link .nav_Filter {
+  display: none;   
+  width: 1100px;
+  height: 300px;
+  background-color: #fff;
+  position: absolute;
+  top: 44px;
+  right: 23%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.Nav_link:hover .nav_Filter {
+  display: block;    
+}
+
+/* -----------------------------------------------------End Nav_link Css-------------------------------------------------- */
 
 .body {
   background-color: #eff7fa;
@@ -175,7 +224,7 @@ p {
 }
 
 .slider_col {
-  padding: 10px 20px;
+  padding: 0px 0px;
 }
 
 .slide_img {
@@ -248,7 +297,7 @@ p {
 }
 .card {
   box-shadow: 1px 5px 20px 0px rgb(192 192 192 / 19%);
-  border: 1px solid transparent !important;
+  /* border: 1px solid transparent !important; */
 }
 
 .card:hover {

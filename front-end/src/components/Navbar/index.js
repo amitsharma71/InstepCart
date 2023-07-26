@@ -44,17 +44,17 @@ const Navbaar = () => {
   return (
     <>
       <div className="nav_header">
-        <div className="top-right">
+        {/* <div className="top-right">
           <p className="vr-border">Sell with us</p>
           <p className="vr-border">call us</p>
           <p>download App</p>
           <img src="/Image/windows.png" alt="" />
-        </div>
+        </div> */}
         {["xl"].map((expand) => (
           <Navbar
             key={expand}
             expand={expand}
-            className="bg-body-tertiary mb-3"
+            className="bg-body-tertiary py-4"
           >
             <Container fluid className="">
               <div className="nav_bar w-100">
@@ -69,7 +69,7 @@ const Navbaar = () => {
                   <Button className="search_button">Search</Button>
                 </Form>
                 <div className="nav-icons sub_header_hide">
-                  <p className="share ">
+                  {/* <p className="share ">
                     share
                     <span>location</span>
                   </p>
@@ -83,8 +83,9 @@ const Navbaar = () => {
                   </span>
                   <span onClick={heartClick}>
                     <BsHeart />
-                  </span>
+                  </span> */}
                   <img onClick={cartClick} src="/Image/cart.png" alt="cart" />
+
                   <p onClick={SignClick} className="sign_hover">
                     Sign In
                   </p>
@@ -122,6 +123,57 @@ const Navbaar = () => {
           </Navbar>
         ))}
         <div className="sales-navbar sub_header_hide">
+          <div class="Nav_link">
+            MOBILE & MORE
+            <div>
+              <ul className="nav_Filter">
+                <li> Mobile & More content...</li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            MEN
+            <div>
+              <ul className="nav_Filter">
+                <li> Men content...</li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            WOMEN
+            <div>
+              <ul className="nav_Filter">
+                <li>Women content...</li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            HOME & KITCHEN
+            <div>
+              <ul className="nav_Filter">
+                <li> Home & Kitchen content...</li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            APPLIANCES
+            <div>
+              <ul className="nav_Filter">
+                <li> Appliances content...</li>
+              </ul>
+            </div>
+          </div>
+          <div class="Nav_link">
+            SPORTS & MORE
+            <div>
+              <ul className="nav_Filter">
+                <li> Sports & More content...</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {/* <div className="sales-navbar sub_header_hide">
           <div
             className="position-relative"
             onMouseOver={() => {
@@ -271,26 +323,28 @@ const Navbaar = () => {
               </Container>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
-      <div>
-        {/* <ScrollingCarousel
+      {/* <div>
+        <ScrollingCarousel
+
           className="promo"
           show={5.5}
           slide={4}
           swiping={true}
         >
-          <p>Jaw Dropping Deals</p>
-          <p>Refurbished Mobile</p>
-          <p>Express Shipping</p>
-          <p>Men's Clothing</p>
-          <p>Women's Fashion</p>
-          <p>Footwear</p>
-          <p>Kitchen & Dinning</p>
-          <p>Audio & Headphones</p>
-          <p>Bags & Luggage</p>
-        </ScrollingCarousel> */}
-      </div>
+            <p>Jaw Dropping Deals</p>
+            <p>Refurbished Mobile</p>
+            <p>Express Shipping</p>
+            <p>Men's Clothing</p>
+            <p>Women's Fashion</p>
+            <p>Footwear</p>
+            <p>Kitchen & Dinning</p>
+            <p>Audio & Headphones</p>
+            <p>Bags & Luggage</p>
+        </ScrollingCarousel>
+      </div> */}
+
     </>
   );
 };
