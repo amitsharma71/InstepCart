@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { ScrollingCarousel } from "@trendyol-js/react-carousel";
+// import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { useState } from "react";
 import ListMobile from "./ListDetails/List";
 import { useNavigate } from "react-router";
@@ -60,7 +60,7 @@ const Navbaar = () => {
           <Navbar
             key={expand}
             expand={expand}
-            className="bg-body-tertiary py-4"
+            className="bg-body-tertiary mb-3"
           >
             <Container fluid className="">
               <div className="nav_bar w-100">
@@ -99,7 +99,8 @@ const Navbaar = () => {
                       id="dropdown-basic-button"
                       title="Dropdown button"
                     >
-                      <Dropdown.Item href="#/action-1">
+                      <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2">
                         <span onClick={() => notificationClick()}>
                           <img
                             src="/Image/notification.png"
@@ -108,7 +109,7 @@ const Navbaar = () => {
                           Notification
                         </span>
                       </Dropdown.Item>
-                      <Dropdown.Item href="#/action-2">as</Dropdown.Item>
+
                       <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
                     </DropdownButton>
                   ) : (
@@ -130,7 +131,7 @@ const Navbaar = () => {
                           Sign In
                         </p>
                       </Dropdown.Item>
-                      <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+                      {/* <Dropdown.Item href="#/action-3">Logout</Dropdown.Item> */}
                     </DropdownButton>
                   )}
                 </div>
@@ -167,57 +168,6 @@ const Navbaar = () => {
           </Navbar>
         ))}
         <div className="sales-navbar sub_header_hide">
-          <div class="Nav_link">
-            MOBILE & MORE
-            <div>
-              <ul className="nav_Filter">
-                <li> Mobile & More content...</li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            MEN
-            <div>
-              <ul className="nav_Filter">
-                <li> Men content...</li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            WOMEN
-            <div>
-              <ul className="nav_Filter">
-                <li>Women content...</li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            HOME & KITCHEN
-            <div>
-              <ul className="nav_Filter">
-                <li> Home & Kitchen content...</li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            APPLIANCES
-            <div>
-              <ul className="nav_Filter">
-                <li> Appliances content...</li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            SPORTS & MORE
-            <div>
-              <ul className="nav_Filter">
-                <li> Sports & More content...</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        {/* <div className="sales-navbar sub_header_hide">
           <div
             className="position-relative"
             onMouseOver={() => {
@@ -366,27 +316,8 @@ const Navbaar = () => {
               </Container>
             )}
           </div>
-        </div> */}
+        </div>
       </div>
-      {/* <div>
-        <ScrollingCarousel
-
-          className="promo"
-          show={5.5}
-          slide={4}
-          swiping={true}
-        >
-            <p>Jaw Dropping Deals</p>
-            <p>Refurbished Mobile</p>
-            <p>Express Shipping</p>
-            <p>Men's Clothing</p>
-            <p>Women's Fashion</p>
-            <p>Footwear</p>
-            <p>Kitchen & Dinning</p>
-            <p>Audio & Headphones</p>
-            <p>Bags & Luggage</p>
-        </ScrollingCarousel>
-      </div> */}
     </>
   );
 };
