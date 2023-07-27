@@ -168,153 +168,54 @@ const Navbaar = () => {
           </Navbar>
         ))}
         <div className="sales-navbar sub_header_hide">
-          <div
-            className="position-relative"
-            onMouseOver={() => {
-              setShowMessage({ ...showMessage, MOBILE: "false" });
-            }}
-            onMouseOut={hideMessage}
-          >
-            <p>MOBILE & MORE</p>
-
-            {showMessage.MOBILE && (
-              <Container>
-                <Row>
-                  <Col md={{ span: 6, offset: 3 }}>
-                    <div
-                      className="mouseoverdiv"
-                      style={{ backgroundColor: "white" }}
-                    >
-                      {" "}
-                      <ListMobile />
-                    </div>
-                  </Col>
-                </Row>
-              </Container>
-            )}
+          <div class="Nav_link">
+            MOBILE & MORE
+            <div>
+              <ul className="nav_Filter">
+                <li> Mobile & More content...</li>
+              </ul>
+            </div>
           </div>
-
-          <div
-            className="position-relative"
-            onMouseOver={() => {
-              setShowMessage({ ...showMessage, MEN: "true" });
-            }}
-            onMouseOut={hideMessage}
-          >
-            <p>MEN</p>
-            {showMessage.MEN && (
-              <Container>
-                <Row>
-                  <Col md={{ span: 6, offset: 3 }}>
-                    <div
-                      className="mouseoverdiv"
-                      style={{ backgroundColor: "white" }}
-                    >
-                      {" "}
-                      hellooo
-                    </div>
-                  </Col>
-                </Row>
-              </Container>
-            )}
+          <div class="Nav_link">
+            MEN
+            <div>
+              <ul className="nav_Filter">
+                <li> Men content...</li>
+              </ul>
+            </div>
           </div>
-
-          <div
-            className="position-relative"
-            onMouseOver={() => {
-              setShowMessage({ ...showMessage, WOMEN: "true" });
-            }}
-            onMouseOut={hideMessage}
-          >
-            <p>WOMEN</p>
-
-            {showMessage.WOMEN && (
-              <Container>
-                <Row>
-                  <Col md={{ span: 6, offset: 3 }}>
-                    <div
-                      className="mouseoverdiv"
-                      style={{ backgroundColor: "white" }}
-                    >
-                      women
-                    </div>
-                  </Col>
-                </Row>
-              </Container>
-            )}
+          <div class="Nav_link">
+            WOMEN
+            <div>
+              <ul className="nav_Filter">
+                <li>Women content...</li>
+              </ul>
+            </div>
           </div>
-          <div
-            className="position-relative"
-            onMouseOver={() => {
-              setShowMessage({ ...showMessage, HOMEKITCHEN: "true" });
-            }}
-            onMouseOut={hideMessage}
-          >
-            <p>HOME & KITCHEN</p>
-
-            {showMessage.HOMEKITCHEN && (
-              <Container>
-                <Row>
-                  <Col md={{ span: 6, offset: 3 }}>
-                    <div
-                      className="mouseoverdiv"
-                      style={{ backgroundColor: "white" }}
-                    >
-                      {" "}
-                      HOMEKITCHEN
-                    </div>
-                  </Col>
-                </Row>
-              </Container>
-            )}
+          <div class="Nav_link">
+            HOME & KITCHEN
+            <div>
+              <ul className="nav_Filter">
+                <li> Home & Kitchen content...</li>
+                <li></li>
+              </ul>
+            </div>
           </div>
-
-          <div
-            className="position-relative"
-            onMouseOver={() => {
-              setShowMessage({ ...showMessage, APPLIANCES: "true" });
-            }}
-          >
-            <p onMouseOut={hideMessage}>APPLIANCES</p>
-
-            {showMessage.APPLIANCES && (
-              <Container>
-                <Row>
-                  <Col md={{ span: 6, offset: 3 }}>
-                    <div
-                      className="mouseoverdiv"
-                      style={{ backgroundColor: "white" }}
-                    >
-                      {" "}
-                      APPLIANCES
-                    </div>
-                  </Col>
-                </Row>
-              </Container>
-            )}
+          <div class="Nav_link">
+            APPLIANCES
+            <div>
+              <ul className="nav_Filter">
+                <li> Appliances content...</li>
+              </ul>
+            </div>
           </div>
-          <div
-            className="position-relative"
-            onMouseOver={() => {
-              setShowMessage({ ...showMessage, SPORTS: "true" });
-            }}
-          >
-            <p onMouseOut={hideMessage}>SPORTS & MORE</p>
-            {showMessage.SPORTS && (
-              <Container>
-                <Row>
-                  <Col md={{ span: 6, offset: 3 }}>
-                    <div
-                      className="mouseoverdiv"
-                      style={{ backgroundColor: "white" }}
-                    >
-                      {" "}
-                      SPORTS
-                    </div>
-                  </Col>
-                </Row>
-              </Container>
-            )}
+          <div class="Nav_link">
+            SPORTS & MORE
+            <div>
+              <ul className="nav_Filter">
+                <li> Sports & More content...</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

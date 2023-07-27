@@ -149,12 +149,13 @@ const Home = () => {
                                   src={e.image || e.thumbnail}
                                 />
                               </div>
+
                               <Card.Body>
                                 <div className="item_rating">
                                   <p>
                                     {" "}
                                     <Badge className="badge" bg="danger">
-                                      {e?.rating}
+                                      {e.rating}
                                     </Badge>
                                   </p>
                                   <p>
@@ -164,31 +165,15 @@ const Home = () => {
                                     </Badge>
                                   </p>
                                 </div>
-                                <Card.Body>
-                                  <div className="item_rating">
-                                    <p>
-                                      {" "}
-                                      <Badge className="badge" bg="danger">
-                                        {e.rating}
-                                      </Badge>
-                                    </p>
-                                    <p>
-                                      {" "}
-                                      <Badge className="badge" bg="primary">
-                                        {e.category}
-                                      </Badge>
-                                    </p>
-                                  </div>
-                                  <Card.Title className="crad_text">
-                                    {e.title}
-                                  </Card.Title>
-                                  <Card.Text className="crad_text">
-                                    {e.description}
-                                  </Card.Text>
-                                  <Card.Text className="crad_text">
-                                    <h5> ₹ {e.price}</h5>
-                                  </Card.Text>
-                                </Card.Body>
+                                <Card.Title className="crad_text">
+                                  {e.title}
+                                </Card.Title>
+                                <Card.Text className="crad_text">
+                                  {e.description}
+                                </Card.Text>
+                                <Card.Text className="crad_text">
+                                  <h5> ₹ {e.price}</h5>
+                                </Card.Text>
                               </Card.Body>
                             </Card>
                           </Link>
