@@ -1,7 +1,7 @@
 import { Sidenav, Nav } from "rsuite";
 
 import MagicIcon from "@rsuite/icons/legacy/Magic";
-import GearCircleIcon from "@rsuite/icons/legacy/GearCircle";
+// import GearCircleIcon from "@rsuite/icons/legacy/GearCircle";
 import "rsuite/dist/rsuite-no-reset.min.css";
 import { AiFillTool, AiOutlineDashboard } from "react-icons/ai";
 import { HiDocument } from "react-icons/hi";
