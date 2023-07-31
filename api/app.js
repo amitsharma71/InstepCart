@@ -62,7 +62,7 @@ server.post("/api/login", async (req, res) => {
   const UserEmail = await User.find({ email: email });
 
   if (!UserEmail) {
-    res.send({ loginStatus: false, err: "User Dose not Exist" });
+    res.send({ loginStatus: false, err: "User Does not Exist" });
   } else if (UserEmail) {
     const LoginVeryfy =
       UserEmail[0]?.email === email && UserEmail[0]?.password === password;
@@ -208,6 +208,79 @@ server.post("/api/category", async (req, res) => {
     res.send(productsjson);
   } catch (error) {
     res.status(400).send({ message: error.message });
+  }
+});
+
+
+//adim api for update from id
+
+server.post("/api/productUpdate", async (req, res) => {
+  console.log("productUpdate ddddddddddddddddddd")
+  const {
+    category,
+    description,
+    title,
+    price,
+    image,
+    brand,
+    rating,
+    subcategory,
+    thumbnail,
+    stock,
+    discountPercentage,
+  } = req.body;
+
+
+  const findbyid = await Userproducts.findByIdAndUpdate(
+    { _id: req.body._id },
+    {
+        category: category,
+        description: description,
+        title: title,
+        price: price,
+        image: image,
+        brand: brand,
+        rating: rating,
+        subcategory: subcategory,
+        thumbnail: thumbnail,
+        stock: stock,
+        discountPercentage: discountPercentage,
+    },
+    {
+      new: true,
+    }
+  );
+  try {
+    res.send(findbyid);
+  } catch (error) {
+    res.status(400).send({ message: error.message });
+  }
+});
+
+
+
+
+// adim api for delete
+
+server.post("/api/procustdlt", async (req, res) => {
+  try {
+    const { _id } = req.body;
+
+    // Use the findByIdAndDelete method to delete the product by its ID
+    const deletedProduct = await Userproducts.findByIdAndDelete(_id);
+
+    if (!deletedProduct) {
+      // If the product with the given ID doesn't exist, return an error response
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    // Return the deleted product
+    
+    res.json(deletedProduct);
+    console.log("dlet ho gya")
+  } catch (error) {
+    // Handle any errors that occurred during the delete process
+    res.status(500).json({ message: "Server error" });
   }
 });
 
