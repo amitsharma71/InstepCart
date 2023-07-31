@@ -87,7 +87,7 @@ server.post("/api/login", async (req, res) => {
   }
 });
 
-//api of products addd
+//api of products addd only for admin
 server.post("/api/products", async (req, res) => {
   const {
     category,
@@ -100,7 +100,7 @@ server.post("/api/products", async (req, res) => {
     subcategory,
     thumbnail,
     stock,
-    discountPercentage,
+    discountpercentage,
   } = req.body;
 
   const data = new Userproducts({
@@ -114,7 +114,7 @@ server.post("/api/products", async (req, res) => {
     subcategory: req.body.subcategory,
     thumbnail: req.body.subcategory,
     stock: req.body.stock,
-    discountPercentage: req.body.discountPercentage,
+    discountpercentage: req.body.discountpercentage,
   });
   try {
     const dataToSave = await data.save();
@@ -123,7 +123,8 @@ server.post("/api/products", async (req, res) => {
     res.status(400).send({ message: error.message });
   }
 });
-//api of products all   category and subcategory,brand
+
+//api of products all   category and subcategory,brand for admin
 
 server.post("/api/Getproducts", async (req, resp) => {
   const {
@@ -137,54 +138,50 @@ server.post("/api/Getproducts", async (req, resp) => {
     subcategory,
     thumbnail,
     stock,
-    discountPercentage,
+    discountpercentage,
   } = req.body;
 
-if (req.body.category) {
-  
-
   if (req.body.category) {
-    const filter = await Userproducts.find({ category: req.body.category });
+    if (req.body.category) {
+      const filter = await Userproducts.find({ category: req.body.category });
 
-    console.log(filter)
+      console.log(filter);
 
-    try {
-      resp.send(filter);
-    } catch (error) {
-      resp.send({ result: "no category products found" });
+      try {
+        resp.send(filter);
+      } catch (error) {
+        resp.send({ result: "no category products found" });
+      }
+    } else if (req.body.subcategory) {
+      console.log("object", req.body.subcategory);
+      const filter = await Userproducts.find({
+        subcategory: "smartphones",
+      });
+
+      console.log(filter, "filter");
+      try {
+        resp.send(filter);
+      } catch (error) {
+        resp.send({ result: "no subcategory products found" });
+      }
+    } else if (req.body.brand) {
+      const filter = await Userproducts.find({ brand: req.body.brand });
+      try {
+        resp.send(filter);
+      } catch (error) {
+        resp.send({ result: "no brand products found" });
+      }
     }
-  } else if (req.body.subcategory) {
-    console.log("object",req.body.subcategory)
-    const filter = await Userproducts.find({
-      subcategory: "smartphones",
-    });
-
-    console.log(filter,'filter')
-    try {
-      resp.send(filter);
-    } catch (error) {
-      resp.send({ result: "no subcategory products found" });
-    }
-  } else if (req.body.brand) {
-    const filter = await Userproducts.find({ brand: req.body.brand });
-    try {
-      resp.send(filter);
-    } catch (error) {
-      resp.send({ result: "no brand products found" });
-    }
-  }
-} else {
-  console.log(req, resp, "console.log");
-  let products = await Userproducts.find();
-
-  if (products.length > 0) {
-    resp.send(products);
   } else {
-    resp.send({ result: "no products found" });
-  }
-}
+    console.log(req, resp, "console.log");
+    let products = await Userproducts.find();
 
- 
+    if (products.length > 0) {
+      resp.send(products);
+    } else {
+      resp.send({ result: "no products found" });
+    }
+  }
 });
 
 //table addd api category
