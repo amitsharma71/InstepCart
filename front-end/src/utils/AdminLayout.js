@@ -1,14 +1,25 @@
 import { memo } from "react";
 import React from "react";
-import Navbar from "../components/Navbar";
 
 import { Navigate, Outlet } from "react-router-dom";
+import AdminNavbar from "../admin/adminNavbar/adminHeader";
+import { Col, Container, Row } from "react-bootstrap";
+import Sidebar from "../admin/sidebar";
 function AdminLayout() {
   const token = localStorage.getItem("token");
   return token ? (
     <>
-      <Navbar />
-      <Outlet />
+      <AdminNavbar />
+      <Container>
+        <Row>
+          <Col sm="3">
+            <Sidebar />
+          </Col>
+          <Col>
+            <Outlet />
+          </Col>
+        </Row>
+      </Container>
     </>
   ) : (
     <Navigate to="/login" />
