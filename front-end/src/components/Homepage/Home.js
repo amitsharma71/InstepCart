@@ -106,10 +106,11 @@ const Home = () => {
               </Carousel.Item>
             </Carousel>
           </div>
-          <Row>
-            <Col lg={12}>
-              <Row>
-                {/* {apiData &&
+          <div className="px-5">
+            <Row>
+              <Col lg={12}>
+                <Row>
+                  {/* {apiData &&
               apiData?.map((e) => {
                 return (
                   <>
@@ -136,55 +137,56 @@ const Home = () => {
                   </>
                 );
               })} */}
-                {data &&
-                  data?.map((e) => {
-                    return (
-                      <>
-                        <Col md={2}>
-                          <Link to={`/productdetail/${e?.id}`} key={e.id}>
-                            <Card className="shopping_card">
-                              <div className="img_div">
-                                <Card.Img
-                                  variant="top"
-                                  src={e.image || e.thumbnail}
-                                />
-                              </div>
-
-                              <Card.Body>
-                                <div className="item_rating">
-                                  <p>
-                                    {" "}
-                                    <Badge className="badge" bg="danger">
-                                      {e.rating}
-                                    </Badge>
-                                  </p>
-                                  <p>
-                                    {" "}
-                                    <Badge className="badge" bg="primary">
-                                      {e.category}
-                                    </Badge>
-                                  </p>
+                  {data &&
+                    data?.map((e) => {
+                      return (
+                        <>
+                          <Col md={4} lg={2}>
+                            <Link to={`/productdetail/${e?.id}`} key={e.id}>
+                              <Card className="shopping_card">
+                                <div className="img_div">
+                                  <Card.Img
+                                    variant="top"
+                                    src={e.image || e.thumbnail}
+                                  />
                                 </div>
-                                <Card.Title className="crad_text">
-                                  {e.title}
-                                </Card.Title>
-                                <Card.Text className="crad_text">
-                                  {e.description}
-                                </Card.Text>
-                                <Card.Text className="crad_text">
-                                  <h5> ₹ {e.price}</h5>
-                                </Card.Text>
-                              </Card.Body>
-                            </Card>
-                          </Link>
-                        </Col>
-                      </>
-                    );
-                  })}
-              </Row>
-            </Col>
-            <Col lg={3}></Col>
-          </Row>
+
+                                <Card.Body>
+                                  <div className="item_rating">
+                                    <p>
+                                      {" "}
+                                      <Badge className="badge" bg="danger">
+                                        {e.rating}
+                                      </Badge>
+                                    </p>
+                                    <p>
+                                      {" "}
+                                      <Badge className="badge" bg="primary">
+                                        {e.category}
+                                      </Badge>
+                                    </p>
+                                  </div>
+                                  <Card.Title className="crad_text">
+                                    {e.title}
+                                  </Card.Title>
+                                  <Card.Text className="crad_text">
+                                    {e.description}
+                                  </Card.Text>
+                                  <Card.Text className="crad_text">
+                                    <h5> ₹ {e.price}</h5>
+                                  </Card.Text>
+                                </Card.Body>
+                              </Card>
+                            </Link>
+                          </Col>
+                        </>
+                      );
+                    })}
+                </Row>
+              </Col>
+              <Col lg={3}></Col>
+            </Row>
+          </div>
         </div>
       </div>
       <div className="container-fluid">
