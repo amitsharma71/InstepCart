@@ -25,7 +25,6 @@ const protects = {
       element: isLoggedIn ? <Layout /> : <Navigate to="/" />,
       children: [
         { path: "/", element: <Home /> },
-        // { path: "/login", element: <Login /> },
         { path: "/addcart", element: <AddtoCart /> },
         { path: "/notification", element: <Notification /> },
         { path: "/likeitem", element: <LikeItem /> },

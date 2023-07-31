@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import { Form, Field } from "react-final-form";
 import { useDispatch } from "react-redux";
 import { registerAction } from "../../Redux/action/registerAction";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Registeration = () => {
   let array = [];
@@ -166,14 +166,9 @@ const Registeration = () => {
                       <button className="des-but" type="submit ">
                         Continue
                       </button>
-                      <button
-                        className="reset_button"
-                        type="button"
-                        onClick={() => goToClick()}
-                        // disabled={submitting || pristine}
-                      >
+                      <Link className="reset_button" to="/login">
                         Already have an Account
-                      </button>
+                      </Link>
                     </div>
                   </form>
                 )}
