@@ -75,31 +75,17 @@ const Navbaar = () => {
                   <Button className="search_button">Search</Button>
                 </Form>
                 <div className="nav-icons sub_header_hide">
-                  {/* <p className="share ">
-                    share
-                    <span>location</span>
-                  </p> */}
-                  {/* <img src="/Image/location.png" alt="location" /> */}
-                  {/* <span>
-                    <img
-                      onClick={notificationClick}
-                      src="/Image/notification.png"
-                      alt="notification"
-                    />
-                  </span> */}
-                  {/* <span onClick={heartClick}>
-                    <BsHeart />
-                  </span> */}
                   <img onClick={cartClick} src="/Image/cart.png" alt="cart" />
-                  {/* <p onClick={SignClick} className="sign_hover">
-                    Sign In
-                  </p> */}
+
                   {userLogin ? (
                     <DropdownButton
                       id="dropdown-basic-button"
                       title="Dropdown button"
                     >
-                      <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                      <Dropdown.Item href="#/action-1">
+                        My Account
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-1">Wishlist</Dropdown.Item>
                       <Dropdown.Item href="#/action-2">
                         <span onClick={() => notificationClick()}>
                           <img
@@ -117,6 +103,14 @@ const Navbaar = () => {
                       id="dropdown-basic-button"
                       title="Dropdown button"
                     >
+                      <Dropdown>
+                        New Customer?{" "}
+                        <p onClick={SignClick} className="sign_hover">
+                          Sign in
+                        </p>
+                      </Dropdown>
+                      <Dropdown>Order</Dropdown>
+                      <Dropdown>Wishlist</Dropdown>
                       <Dropdown.Item href="#/action-1">
                         <span onClick={() => notificationClick()}>
                           <img
@@ -126,12 +120,8 @@ const Navbaar = () => {
                           Notification
                         </span>
                       </Dropdown.Item>
-                      <Dropdown.Item href="#/action-2">
-                        <p onClick={SignClick} className="sign_hover">
-                          Sign In
-                        </p>
-                      </Dropdown.Item>
-                      {/* <Dropdown.Item href="#/action-3">Logout</Dropdown.Item> */}
+
+                      {/* {<Dropdown.Item href="#/action-3">Logout</Dropdown.Item> } */}
                     </DropdownButton>
                   )}
                 </div>

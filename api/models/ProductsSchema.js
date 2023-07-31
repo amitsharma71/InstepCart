@@ -9,45 +9,45 @@
       type: String,
       required: true,
     },
+  subcategory: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  thumbnail: {
+    type: String,
+    require: true,
+  },
+  images: {
+    type: Array,
+    required: true,
+  },
+  brand: {
+    type: String,
+    required: true,
+  },
+  discountpercentage: {
+    type: Number,
+    required: true,
+  },
+  stock: {
+    type: Number,
+    required: true,
+  },
+  rating: {
+    type: Number,
+    required: true,
+  },
+});
+ProductSchema.set("productsof", true);
+const Userproducts = mongoose.model("Userproducts", ProductSchema);
 
-    subcategory: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    thumbnail: {
-      type: String,
-      require: true,
-    },
-    images: {
-      type: Array,
-      required: true,
-    },
-    brand: {
-      type: String,
-      required: true,
-    },
-    discountPercentage: {
-      type: Number,
-      required: true,
-    },
-    stock: {
-      type: Number,
-      required: true,
-    },
-    rating: {
-      type: Number,
-      required: true,
-    },
-  });
-  ProductSchema.set("productsof", true);
-  const Userproducts = mongoose.model("Userproducts", ProductSchema);
 
   module.exports = Userproducts;

@@ -87,7 +87,7 @@ server.post("/api/login", async (req, res) => {
   }
 });
 
-//api of products addd
+//api of products addd only for admin
 server.post("/api/products", async (req, res) => {
   const {
     category,
@@ -100,7 +100,7 @@ server.post("/api/products", async (req, res) => {
     subcategory,
     thumbnail,
     stock,
-    discountPercentage,
+    discountpercentage,
   } = req.body;
 
   const data = new Userproducts({
@@ -114,7 +114,7 @@ server.post("/api/products", async (req, res) => {
     subcategory: req.body.subcategory,
     thumbnail: req.body.subcategory,
     stock: req.body.stock,
-    discountPercentage: req.body.discountPercentage,
+    discountpercentage: req.body.discountpercentage,
   });
   try {
     const dataToSave = await data.save();
@@ -123,7 +123,8 @@ server.post("/api/products", async (req, res) => {
     res.status(400).send({ message: error.message });
   }
 });
-//api of products all   category and subcategory,brand
+
+//api of products all   category and subcategory,brand for admin
 
 server.post("/api/Getproducts", async (req, resp) => {
   const {
@@ -137,7 +138,7 @@ server.post("/api/Getproducts", async (req, resp) => {
     subcategory,
     thumbnail,
     stock,
-    discountPercentage,
+    discountpercentage,
   } = req.body;
 
   if (req.body.category) {

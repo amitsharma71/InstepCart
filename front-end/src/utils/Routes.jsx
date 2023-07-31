@@ -12,6 +12,8 @@ import { Navigate } from "react-router-dom";
 import AdminLayout from "./AdminLayout";
 import ProductDetails from "../components/Product/ProductDetails";
 import Dashboard from "../admin/adminDashboard";
+import ProductForm from "../admin/adminProductDetail/addProductForm";
+import AllProductListing from "../admin/adminProductDetail/allDataListing";
 
 const role = getUserId() ? getUserId()?.userRole : null;
 console.log(role, "aaasdfgfds");
@@ -38,6 +40,8 @@ const protects = {
       element: isLoggedIn ? <AdminLayout /> : <Navigate to="/" />,
       children: [
         { path: "/", element: <Dashboard /> },
+        { path: "productform", element: <ProductForm /> },
+        { path: "allproductlist", element: <AllProductListing /> },
         // { path: "/createlogin", element: <CreateLogin /> },
         // { path: "/addcart", element: <AddtoCart /> },
         // { path: "/login", element: <Login /> },
