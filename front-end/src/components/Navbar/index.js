@@ -62,98 +62,109 @@ const Navbaar = () => {
             expand={expand}
             className="bg-body-tertiary py-4"
           >
-            <div className="nav_bar w-100">
-              <Navbar.Brand href="#">INSTEPCART</Navbar.Brand>
-              <Form className="d-flex search-bar">
-                <Form.Control
-                  type="search"
-                  placeholder="What is on your mind today?"
-                  className=" search_bar"
-                  aria-label="Search"
-                />
-                <Button className="search_button">Search</Button>
-              </Form>
-              <div className="nav-icons sub_header_hide">
-                {/* <p className="share ">
+            <Container fluid className="">
+              <div className="nav_bar w-100">
+                <Navbar.Brand href="#">INSTEPCART</Navbar.Brand>
+                <Form className="d-flex search-bar">
+                  <Form.Control
+                    type="search"
+                    placeholder="What is on your mind today?"
+                    className=" search_bar"
+                    aria-label="Search"
+                  />
+                  <Button className="search_button">Search</Button>
+                </Form>
+                <div className="nav-icons sub_header_hide">
+                  {/* <p className="share ">
                     share
                     <span>location</span>
                   </p> */}
-                {/* <img src="/Image/location.png" alt="location" /> */}
-                {/* <span>
+                  {/* <img src="/Image/location.png" alt="location" /> */}
+                  {/* <span>
                     <img
                       onClick={notificationClick}
                       src="/Image/notification.png"
                       alt="notification"
                     />
                   </span> */}
-                {/* <span onClick={heartClick}>
+                  {/* <span onClick={heartClick}>
                     <BsHeart />
                   </span> */}
-                <img onClick={cartClick} src="/Image/cart.png" alt="cart" />
-                {/* <p onClick={SignClick} className="sign_hover">
+                  <img onClick={cartClick} src="/Image/cart.png" alt="cart" />
+                  {/* <p onClick={SignClick} className="sign_hover">
                     Sign In
                   </p> */}
-                {userLogin ? (
-                  <DropdownButton
-                    id="dropdown-basic-button"
-                    title="Dropdown button"
-                  >
-                    <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      <span onClick={() => notificationClick()}>
-                        <img src="/Image/notification.png" alt="notification" />
-                        Notification
-                      </span>
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
-                  </DropdownButton>
-                ) : (
-                  <DropdownButton
-                    id="dropdown-basic-button"
-                    title="Dropdown button"
-                  >
-                    <Dropdown.Item href="#/action-1">
-                      <span onClick={() => notificationClick()}>
-                        <img src="/Image/notification.png" alt="notification" />
-                        Notification
-                      </span>
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      <p onClick={SignClick} className="sign_hover">
-                        Sign In
-                      </p>
-                    </Dropdown.Item>
-                    {/* <Dropdown.Item href="#/action-3">Logout</Dropdown.Item> */}
-                  </DropdownButton>
-                )}
+                  {userLogin ? (
+                    <DropdownButton
+                      id="dropdown-basic-button"
+                      title="Dropdown button"
+                    >
+                      <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2">
+                        <span onClick={() => notificationClick()}>
+                          <img
+                            src="/Image/notification.png"
+                            alt="notification"
+                          />
+                          Notification
+                        </span>
+                      </Dropdown.Item>
+
+                      <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+                    </DropdownButton>
+                  ) : (
+                    <DropdownButton
+                      id="dropdown-basic-button"
+                      title="Dropdown button"
+                    >
+                      <Dropdown.Item href="#/action-1">
+                        <span onClick={() => notificationClick()}>
+                          <img
+                            src="/Image/notification.png"
+                            alt="notification"
+                          />
+                          Notification
+                        </span>
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-2">
+                        <p onClick={SignClick} className="sign_hover">
+                          Sign In
+                        </p>
+                      </Dropdown.Item>
+                      {/* <Dropdown.Item href="#/action-3">Logout</Dropdown.Item> */}
+                    </DropdownButton>
+                  )}
+                </div>
               </div>
-            </div>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  INSTEPCART
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className=" hide_links ">
-                  <Nav.Link href="">
-                    <img src="/Image/location.png" alt="location" />
-                    <img src="/Image/cart.png" alt="cart" />
-                  </Nav.Link>
-                  <Nav.Link href="www.google.com">MOBILE & MORE</Nav.Link>
-                  <Nav.Link href="#action2">MEN</Nav.Link>
-                  <Nav.Link href="#action2">WOMEN</Nav.Link>
-                  <Nav.Link href="#action2">HOME & KITCHEN</Nav.Link>
-                  <Nav.Link href="#action2">APPLIANCES</Nav.Link>
-                  <Nav.Link href="#action2">SPORTS & MORE</Nav.Link>
-                </Nav>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
+              <Navbar.Toggle
+                aria-controls={`offcanvasNavbar-expand-${expand}`}
+              />
+              <Navbar.Offcanvas
+                id={`offcanvasNavbar-expand-${expand}`}
+                aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+                placement="end"
+              >
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                    INSTEPCART
+                  </Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  <Nav className=" hide_links ">
+                    <Nav.Link href="">
+                      <img src="/Image/location.png" alt="location" />
+                      <img src="/Image/cart.png" alt="cart" />
+                    </Nav.Link>
+                    <Nav.Link href="www.google.com">MOBILE & MORE</Nav.Link>
+                    <Nav.Link href="#action2">MEN</Nav.Link>
+                    <Nav.Link href="#action2">WOMEN</Nav.Link>
+                    <Nav.Link href="#action2">HOME & KITCHEN</Nav.Link>
+                    <Nav.Link href="#action2">APPLIANCES</Nav.Link>
+                    <Nav.Link href="#action2">SPORTS & MORE</Nav.Link>
+                  </Nav>
+                </Offcanvas.Body>
+              </Navbar.Offcanvas>
+            </Container>
           </Navbar>
         ))}
         <div className="sales-navbar sub_header_hide">
