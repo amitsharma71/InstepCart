@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import { Field, Form } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../Redux/action/loginAction";
-import { Link, useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,7 @@ const Login = () => {
       localStorage.setItem("token", JSON.stringify(Token));
       window.location.reload();
     });
+
   };
   const res = useSelector((state) => state?.logindatacheck?.listdata);
   let Token;
@@ -41,6 +42,9 @@ const Login = () => {
     return errors;
   };
 
+  const logClick = () => {
+    navigate("/createlogin");
+  };
   const initialValues = {
     email: "",
     password: "",
@@ -123,10 +127,7 @@ const Login = () => {
                 />
               </div>
               <div className="create_accnt">
-                <p>
-                  New to Instepcart?
-                  <Link to="/createlogin">Create an account</Link>
-                </p>
+                <a onClick={logClick} href="db">New to Instepcart? Create an account</a>
               </div>
             </Col>
           </Row>

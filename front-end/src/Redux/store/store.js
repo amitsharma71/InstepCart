@@ -5,8 +5,6 @@ import registerDataReducer from "../reducer/registerReducer";
 import liginDataReducer from "../reducer/loginReducer";
 import ProductDetailReducer from "../reducer/productDetailSlice";
 import getProductActionReducer from "../reducer/getProductReducer";
-import PostProductDataReducer from "../reducer/adminPostProductReducer";
-import GetAdminProductListDataReducer from "../reducer/getProductAdminListReducer";
 
 export const store = configureStore({
   reducer: {
@@ -16,7 +14,5 @@ export const store = configureStore({
     logindatacheck: liginDataReducer,
     productdetaildata: ProductDetailReducer,
     getproductdata: getProductActionReducer,
-    postproductAdmindata: PostProductDataReducer,
-    GetAdminProductAllListData: GetAdminProductListDataReducer,
   },
 });

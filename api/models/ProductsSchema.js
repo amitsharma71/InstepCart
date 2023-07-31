@@ -1,14 +1,15 @@
-  const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-  const ProductSchema = new mongoose.Schema({
-    description: {
-      type: String,
-      required: true,
-    },
-    category: {
-      type: String,
-      required: true,
-    },
+const ProductSchema = new mongoose.Schema({
+  description: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+
   subcategory: {
     type: String,
     required: true,
@@ -33,7 +34,7 @@
     type: String,
     required: true,
   },
-  discountpercentage: {
+  discountPercentage: {
     type: Number,
     required: true,
   },
@@ -49,5 +50,4 @@
 ProductSchema.set("productsof", true);
 const Userproducts = mongoose.model("Userproducts", ProductSchema);
 
-
-  module.exports = Userproducts;
+module.exports = Userproducts;
