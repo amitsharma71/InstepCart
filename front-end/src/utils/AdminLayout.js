@@ -12,7 +12,7 @@ function AdminLayout() {
       <AdminNavbar />
       <Container>
         <Row>
-          <Col>
+          <Col sm="3">
             <Sidebar />
           </Col>
           <Col>
