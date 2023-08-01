@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Sidebar from "../sidebar";
@@ -6,21 +6,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { allAdminProductList } from "../../Redux/action/getAllProductListing";
 import { AiFillCreditCard } from "react-icons/ai";
 import { RiDeleteBinFill } from "react-icons/ri";
+import { deleteProduct } from "../../Redux/action/deleteProductAction";
+import { updateProduct } from "../../Redux/action/updateProductAction";
+import StaticExample from "./updateProductForm";
+import MydModalWithGrid from "./updateProductForm";
 
 function AllProductListing() {
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const data = useSelector(
     (state) => state?.GetAdminProductAllListData?.listdata
   );
-  // console.log(data, "adminlist");
+  console.log(data, "adminlist");
 
   // listing data for admin..
 
   useEffect(() => {
     dispatch(allAdminProductList());
   }, []);
-  const deleteClick = () => {};
-  const editClick = () => {};
+  const deleteClick = (_id) => {
+    dispatch(deleteProduct({ _id: _id })).then((res) => {
+      console.log(res?.meta?.requestStatus);
+      if (res?.meta?.requestStatus === "fulfilled") {
+        // alert("ok")
+        dispatch(allAdminProductList());
+      }
+    });
+  };
+  const editClick = (_id, values) => {
+    dispatch(updateProduct({ _id: _id }));
+    setShow(true);
+    console.log("wwww");
+  };
+  const handleClose = () => setShow(false);
   return (
     <>
       <div>
@@ -50,8 +68,13 @@ function AllProductListing() {
                       <td>{product.price}</td>
                       <td>{product.brand}</td>
                       <td>
-                        <AiFillCreditCard onClick={deleteClick} />
-                        <RiDeleteBinFill onClick={editClick} />
+                        <AiFillCreditCard
+                          onClick={() => editClick(product._id)}
+                        />
+
+                        <RiDeleteBinFill
+                          onClick={() => deleteClick(product._id)}
+                        />
                       </td>
                     </tr>
                   </>
@@ -59,6 +82,7 @@ function AllProductListing() {
               })}
           </tbody>
         </Table>
+        <MydModalWithGrid show={show} handleClose={handleClose} />
       </div>
     </>
   );

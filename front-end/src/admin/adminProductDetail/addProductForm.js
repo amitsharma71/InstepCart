@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 import { adminPostProduct } from "../../Redux/action/adminPostProductAction";
 import { Col, Container, Row } from "react-bootstrap";
 import Sidebar from "../sidebar";
+import { useLocation, useSearchParams, useParams } from "react-router-dom";
+import { updateProduct } from "../../Redux/action/updateProductAction";
+// import [useSearchParams]
 
 const ProductForm = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
+
   console.log(data, "");
 
   // Add product from admin
@@ -17,24 +21,59 @@ const ProductForm = () => {
     console.log(values, "sasasasasasasa");
   };
 
-  const initialValues = {
-    description: "",
-    category: "",
-    title: "",
-    price: "",
-    images: "",
-    brand: "",
-    rating: "",
-    subcategory: "",
-    thumbnail: "",
-    stock: "",
-    discountpercentage: "",
+  const { id } = useParams();
+  console.log(id, "jjjjjjjjjjjjjj");
+
+  // useEffect((values) => {
+  //   if (id) {
+  //     dispatch(updateProduct(id, values));
+  //   } else {
+  //     dispatch(adminPostProduct(values));
+  //   }
+  //   console.log(id, "valuess");
+  // }, []);
+
+  // const initialValues = {
+  //   description: "",
+  //   category: "",
+  //   title: "",
+  //   price: "",
+  //   images: "",
+  //   brand: "",
+  //   rating: "",
+  //   subcategory: "",
+  //   thumbnail: "",
+  //   stock: "",
+  //   discountpercentage: "",
+  // };
+
+  const init = () => {
+    let initialValues = {};
+    if (id) {
+      initialValues = {};
+    } else {
+      initialValues = {
+        description: "",
+        category: "",
+        title: "",
+        price: "",
+        images: "",
+        brand: "",
+        rating: "",
+        subcategory: "",
+        thumbnail: "",
+        stock: "",
+        discountpercentage: "",
+      };
+    }
+    return initialValues;
   };
 
+  const initialValues = useMemo(() => init(), []);
   return (
     <>
       <h2>Add New Product</h2>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} initialValues={initialValues}>
         {({ handleSubmit, submitting }) => (
           <form onSubmit={handleSubmit}>
             <div>
@@ -42,6 +81,9 @@ const ProductForm = () => {
               <Field name="category" component="select" required>
                 <option value="1">Electronics</option>
                 <option value="2">Men</option>
+                <option value="3">Home & kitchen</option>
+                <option value="3">Appliances</option>
+                <option value="3">Sports & More</option>
                 <option value="3">Women</option>
                 {/* {categories.map((category) => (
                           <option key={category.value} value={category.value}>
