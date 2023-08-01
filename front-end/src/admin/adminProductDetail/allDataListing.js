@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 import Sidebar from "../sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { allAdminProductList } from "../../Redux/action/getAllProductListing";
-import { AiFillCreditCard } from "react-icons/ai";
+import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { deleteProduct } from "../../Redux/action/deleteProductAction";
 import { updateProduct } from "../../Redux/action/updateProductAction";
@@ -41,9 +41,10 @@ function AllProductListing() {
   const handleClose = () => setShow(false);
   return (
     <>
+  
       <div>
         <h2>All Products</h2>
-        <Table striped bordered hover variant="light">
+        <Table responsive striped bordered hover variant="light">
           <thead>
             <tr>
               <th>#</th>
@@ -75,6 +76,7 @@ function AllProductListing() {
                         <RiDeleteBinFill
                           onClick={() => deleteClick(product._id)}
                         />
+
                       </td>
                     </tr>
                   </>

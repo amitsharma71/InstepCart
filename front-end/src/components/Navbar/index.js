@@ -155,7 +155,7 @@ const Navbaar = () => {
                       <img src="/Image/location.png" alt="location" />
                       <img src="/Image/cart.png" alt="cart" />
                     </Nav.Link>
-                    <Nav.Link href="www.google.com">MOBILE & MORE</Nav.Link>
+                    <Nav.Link href="www.google.com">ELECTRONICS</Nav.Link>
                     <Nav.Link href="#action2">MEN</Nav.Link>
                     <Nav.Link href="#action2">WOMEN</Nav.Link>
                     <Nav.Link href="#action2">HOME & KITCHEN</Nav.Link>
@@ -169,52 +169,155 @@ const Navbaar = () => {
         ))}
         <div className="sales-navbar sub_header_hide">
           <div class="Nav_link">
-            MOBILE & MORE
-            <div>
-              <ul className="nav_Filter">
-                <li> Mobile & More content...</li>
-              </ul>
+            ELECTRONICS
+            <div className="nav_Filter Electric_positon">
+              <div>
+                <ul className="border_right">
+                  <h5>Smartphone</h5>
+                  <li>Apple</li>
+                  <li>Samsung</li>
+                  <li>Dell</li>
+                  <li>Sony</li>
+                </ul>
+                <ul className="border_right">
+                  <h5> Laptop</h5>
+                  <li>Apple</li>
+                  <li>Samsung</li>
+                  <li>Dell</li>
+                  <li>Sony</li>
+                </ul>
+                <ul>
+                  <h5>Speaker</h5>
+                  <li>Samsung</li>
+                  <li>DEll</li>
+                  <li>Sony</li>
+                  <li>Bose</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="Nav_link">
             MEN
-            <div>
-              <ul className="nav_Filter">
-                <li> Men content...</li>
-              </ul>
+            <div className="nav_Filter men_position">
+              <div>
+                <ul className="border_right">
+                  <h5> Mens's Clothing</h5>
+                  <li>Nike</li>
+                  <li> Adidas</li>
+                  <li> Levi's</li>
+                </ul>
+                <ul className="border_right">
+                  <h5> Footwear</h5>
+                  <li>Nike</li>
+                  <li> Adidas</li>
+                  <li> Levi's</li>
+                  <li> Puma</li>
+                </ul>   
+                <ul>
+                  <h5> Glasses</h5>
+                  <li>Ray-Ban</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="Nav_link">
             WOMEN
-            <div>
-              <ul className="nav_Filter">
-                <li>Women content...</li>
-              </ul>
+            <div className="nav_Filter Women_Position">
+              <div>
+                <ul className="border_right">
+                  <h5> Women's Clothing</h5>
+                  <li>Zara</li>
+                  <li> Gucci</li>
+                  <li> H&M</li>
+                  <li> Prada</li>
+                  <li> Jimmy Choo</li>
+                </ul>
+                <ul className="border_right">
+                  <h5> Footwear</h5>
+                  <li>Zara</li>
+                  <li> Gucci</li>
+                  <li> H&M</li>
+                  <li> Prada</li>
+                  <li> Jimmy Choo</li>
+                </ul>
+                <ul>
+                  <h5> Glasses</h5>
+                  <li>Zara</li>
+                  <li> Gucci</li>
+                  <li> H&M</li>
+                  <li> Prada</li>
+                  <li> Jimmy Choo</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="Nav_link">
             HOME & KITCHEN
+            <div className="nav_Filter home_position">
             <div>
-              <ul className="nav_Filter">
-                <li> Home & Kitchen content...</li>
-                <li></li>
-              </ul>
+                <ul className="border_right">
+                  <h5> Kitchen & Dining</h5>
+                  <li>KitchenAid</li>
+                  <li> Cuisinart</li>
+                  <li> IKEA</li>
+                  <li> H&M Home</li>
+                  <li>West Elm</li>
+                </ul>
+                <ul>
+                  <h5> Decor</h5>
+                  <li>KitchenAid</li>
+                  <li> Cuisinart</li>
+                  <li> IKEA</li>
+                  <li> H&M Home</li>
+                  <li>West Elm</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="Nav_link">
             APPLIANCES
+            <div className="nav_Filter Appliance_position">
             <div>
-              <ul className="nav_Filter">
-                <li> Appliances content...</li>
-              </ul>
+                <ul className="border_right">
+                  <h5>Aircooler</h5>
+                  <li>Honeywell</li>
+                  <li> Dyson</li>
+                  <li> Bajaj</li>
+                  <li> Philips</li>
+                  <li>Vornado</li>
+                </ul>
+                <ul>
+                  <h5> Room Heaters</h5>
+                  <li>KitchenAid</li>
+                  <li> Dyson</li>
+                  <li> Bajaj</li>
+                  <li> Philips</li>
+                  <li>Vornado</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="Nav_link">
             SPORTS & MORE
+            <div className="nav_Filter sport_position">
             <div>
-              <ul className="nav_Filter">
-                <li> Sports & More content...</li>
-              </ul>
+                <ul className="border_right">
+                  <h5>Sports</h5>
+                  <li>Nike</li>
+                  <li> Under Armour</li>
+                  <li> Reebok</li>
+                  <li> Adidas</li>
+                  <li>Fitbit</li>
+                </ul>
+                <ul>
+                  <h5>Health & Wellness</h5>
+                  <li>Nike</li>
+                  <li> Under Armour</li>
+                  <li> Reebok</li>
+                  <li> Adidas</li>
+                  <li>Fitbit</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
