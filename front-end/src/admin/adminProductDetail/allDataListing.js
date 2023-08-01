@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 import Sidebar from "../sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { allAdminProductList } from "../../Redux/action/getAllProductListing";
-import { AiFillCreditCard } from "react-icons/ai";
+import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinFill } from "react-icons/ri";
 
 function AllProductListing() {
@@ -23,9 +23,10 @@ function AllProductListing() {
   const editClick = () => {};
   return (
     <>
+  
       <div>
         <h2>All Products</h2>
-        <Table striped bordered hover variant="light">
+        <Table responsive striped bordered hover variant="light">
           <thead>
             <tr>
               <th>#</th>
@@ -44,14 +45,14 @@ function AllProductListing() {
                   <>
                     <tr key={index}>
                       <td></td>
-                      <td>{product.title}</td>
-                      <td>{product.category}</td>
-                      <td>{product.subcategory}</td>
-                      <td>{product.price}</td>
-                      <td>{product.brand}</td>
-                      <td>
-                        <AiFillCreditCard onClick={deleteClick} />
-                        <RiDeleteBinFill onClick={editClick} />
+                      <td className="index_category">{product.title}</td>
+                      <td className="index_category">{product.category}</td>
+                      <td className="index_category">{product.subcategory}</td>
+                      <td className="index_category"> {product.price}</td>
+                      <td className="index_category">{product.brand}</td>
+                      <td className="d-flex icon_div">
+                        <FiEdit className="product_icon" onClick={deleteClick} />
+                        <RiDeleteBinFill className="product_icon" onClick={editClick} />
                       </td>
                     </tr>
                   </>
