@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
 import { adminPostProduct } from "../../Redux/action/adminPostProductAction";
-import {  Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import Sidebar from "../sidebar";
+import { useLocation, useSearchParams, useParams } from "react-router-dom";
+import { updateProduct } from "../../Redux/action/updateProductAction";
+// import [useSearchParams]
+
 
 const ProductForm = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
+
   console.log(data, "");
 
   // Add product from admin
@@ -16,31 +22,68 @@ const ProductForm = () => {
     console.log(values, "sasasasasasasa");
   };
 
-  const initialValues = {
-    description: "",
-    category: "",
-    title: "",
-    price: "",
-    images: "",
-    brand: "",
-    rating: "",
-    subcategory: "",
-    thumbnail: "",
-    stock: "",
-    discountpercentage: "",
+  const { id } = useParams();
+  console.log(id, "jjjjjjjjjjjjjj");
+
+  // useEffect((values) => {
+  //   if (id) {
+  //     dispatch(updateProduct(id, values));
+  //   } else {
+  //     dispatch(adminPostProduct(values));
+  //   }
+  //   console.log(id, "valuess");
+  // }, []);
+
+  // const initialValues = {
+  //   description: "",
+  //   category: "",
+  //   title: "",
+  //   price: "",
+  //   images: "",
+  //   brand: "",
+  //   rating: "",
+  //   subcategory: "",
+  //   thumbnail: "",
+  //   stock: "",
+  //   discountpercentage: "",
+  // };
+
+  const init = () => {
+    let initialValues = {};
+    if (id) {
+      initialValues = {};
+    } else {
+      initialValues = {
+        description: "",
+        category: "",
+        title: "",
+        price: "",
+        images: "",
+        brand: "",
+        rating: "",
+        subcategory: "",
+        thumbnail: "",
+        stock: "",
+        discountpercentage: "",
+      };
+    }
+    return initialValues;
   };
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const initialValues = useMemo(() => init(), []);
   return (
     <>
 
       <h2>Add New Product</h2>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} initialValues={initialValues}>
         {({ handleSubmit, submitting }) => (
           <form onSubmit={handleSubmit}>
+            <div>
+        
             <Row>
               <Col sm={12} md={12} lg={6}>
                 <div className="left_addtoproduct">
