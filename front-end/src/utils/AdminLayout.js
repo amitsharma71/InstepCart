@@ -10,12 +10,12 @@ function AdminLayout() {
   return token ? (
     <>
       <AdminNavbar />
-      <Container>
+      <Container className="container_width">
         <Row>
-          <Col sm="3">
+          <Col md={4} lg={3}>
             <Sidebar />
           </Col>
-          <Col>
+          <Col md={8} lg={9}>
             <Outlet />
           </Col>
         </Row>
