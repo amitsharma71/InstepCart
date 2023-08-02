@@ -8,7 +8,7 @@ import Sidebar from "../sidebar";
 const ProductForm = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
-  console.log(data, "");
+  console.log(data, "abc");
 
   // Add product from admin
 
@@ -34,21 +34,21 @@ const ProductForm = () => {
   return (
     <>
       <h2>Add New Product</h2>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} initialValues={initialValues}>
         {({ handleSubmit, submitting }) => (
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="category">Category</label>
-              <Field name="category" component="select" required>
-                <option value="1">Electronics</option>
-                <option value="2">Men</option>
-                <option value="3">Women</option>
-                {/* {categories.map((category) => (
+              <Field name="category" component="input" type="text" required />
+              {/* <option>Select One</option>
+                <option value="">Electronics</option>
+                <option value="">Men</option>
+                <option value="">Women</option> */}
+              {/* {categories.map((category) => (
                           <option key={category.value} value={category.value}>
                             {category.label}
                           </option>
                         ))} */}
-              </Field>
             </div>
 
             <div>
@@ -63,7 +63,7 @@ const ProductForm = () => {
             </div>
 
             <div>
-              <label htmlFor="title">Image</label>
+              <label htmlFor="title">Title</label>
               <Field
                 name="title"
                 component="input"

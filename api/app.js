@@ -30,13 +30,13 @@ server.use(bodyParser.json());
 
 //register api
 server.post("/api/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { email, password, username } = req.body;
 
   const role = "user";
   const data = new User({
-    username: req.body.name,
     email: req.body.email,
     password: req.body.password,
+    username: req.body.username,
     role: role,
   });
 
@@ -59,20 +59,23 @@ server.post("/api/register", async (req, res) => {
 //login api
 server.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
-  const UserEmail = await User.find({ email: email });
 
+  const UserEmail = await User.find({ email: email });
   if (!UserEmail) {
     res.send({ loginStatus: false, err: "User Does not Exist" });
   } else if (UserEmail) {
     const LoginVeryfy =
       UserEmail[0]?.email === email && UserEmail[0]?.password === password;
     if (LoginVeryfy) {
+      console.log(UserEmail[0]);
+
       const token = jwt.sign(
         {
           userEmail: UserEmail[0]?.email,
           userRole: UserEmail[0]?.role,
-          userName: UserEmail[0]?.username,
+          username: UserEmail[0].username,
         },
+
         secretkey,
         {
           expiresIn: "8h",
@@ -80,7 +83,7 @@ server.post("/api/login", async (req, res) => {
       );
 
       res.json({ loginStatus: LoginVeryfy, tokenuigiugitygtyigtyi: token });
-      console.log(token, "okkkkkk");
+      console.log(token, "token huuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
     } else if (!LoginVeryfy) {
       res.send({ loginStatus: false, err: "Password Dose not match" });
     }
@@ -211,11 +214,10 @@ server.post("/api/category", async (req, res) => {
   }
 });
 
-
-//adim api for update from id
+//admn api for update from id
 
 server.post("/api/productUpdate", async (req, res) => {
-  console.log("productUpdate ddddddddddddddddddd")
+  console.log("productUpdate ddddddddddddddddddd");
   const {
     category,
     description,
@@ -230,21 +232,20 @@ server.post("/api/productUpdate", async (req, res) => {
     discountPercentage,
   } = req.body;
 
-
   const findbyid = await Userproducts.findByIdAndUpdate(
     { _id: req.body._id },
     {
-        category: category,
-        description: description,
-        title: title,
-        price: price,
-        image: image,
-        brand: brand,
-        rating: rating,
-        subcategory: subcategory,
-        thumbnail: thumbnail,
-        stock: stock,
-        discountPercentage: discountPercentage,
+      category: category,
+      description: description,
+      title: title,
+      price: price,
+      image: image,
+      brand: brand,
+      rating: rating,
+      subcategory: subcategory,
+      thumbnail: thumbnail,
+      stock: stock,
+      discountPercentage: discountPercentage,
     },
     {
       new: true,
@@ -256,9 +257,6 @@ server.post("/api/productUpdate", async (req, res) => {
     res.status(400).send({ message: error.message });
   }
 });
-
-
-
 
 // adim api for delete
 
@@ -275,9 +273,9 @@ server.post("/api/procustdlt", async (req, res) => {
     }
 
     // Return the deleted product
-    
+
     res.json(deletedProduct);
-    console.log("dlet ho gya")
+    console.log("dlet ho gya");
   } catch (error) {
     // Handle any errors that occurred during the delete process
     res.status(500).json({ message: "Server error" });

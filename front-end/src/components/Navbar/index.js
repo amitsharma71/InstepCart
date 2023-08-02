@@ -1,23 +1,29 @@
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-// import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-import { useState } from "react";
-import ListMobile from "./ListDetails/List";
 import { useNavigate } from "react-router";
-import { BsHeart } from "react-icons/bs";
 import { Dropdown, DropdownButton } from "react-bootstrap";
+import { getUserId } from "../../utils/auth";
+import { React, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { filterByCategory } from "../../Redux/action/getFilterCategoryAction";
+import { getProductAction } from "../../Redux/action/getProductDetailAction";
 
 const Navbaar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const [usename, setUsername] = useState();
+
+  // console.log(userData.role ? userData.username : null, "userData");
+
+  const userData = getUserId();
+  // setUsername(userData?.username);
 
   const userLogin = localStorage.getItem("token");
-  console.log(userLogin, "userLogin");
+  // console.log(userLogin, "userLogin");
 
   const [showMessage, setShowMessage] = useState({
     MOBILE: "false",
@@ -46,6 +52,28 @@ const Navbaar = () => {
   const notificationClick = () => {
     navigate("/notification");
   };
+  const logoutClick = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
+  // postproductAdmindata
+
+  const filterdata = useSelector(
+    (state) => state?.filtercategoryData?.listdata
+  );
+
+  console.log(filterdata, "filterdatafilterdata");
+
+  useEffect(() => {
+    // dispatch(allAdminProductList());
+
+    dispatch(filterByCategory());
+
+    dispatch(getProductAction());
+  }, []);
+
+  const brandClick = () => {};
 
   return (
     <>
@@ -94,10 +122,10 @@ const Navbaar = () => {
                   {/* <p onClick={SignClick} className="sign_hover">
                     Sign In
                   </p> */}
-                  {userLogin ? (
+                  {userLogin && userData ? (
                     <DropdownButton
                       id="dropdown-basic-button"
-                      title="Dropdown button"
+                      title={userData?.username}
                     >
                       <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
                       <Dropdown.Item href="#/action-2">
@@ -109,14 +137,15 @@ const Navbaar = () => {
                           Notification
                         </span>
                       </Dropdown.Item>
-
-                      <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+                      <Dropdown.Item
+                        href="#/action-3"
+                        onClick={() => logoutClick()}
+                      >
+                        Logout
+                      </Dropdown.Item>
                     </DropdownButton>
                   ) : (
-                    <DropdownButton
-                      id="dropdown-basic-button"
-                      title="Dropdown button"
-                    >
+                    <DropdownButton id="dropdown-basic-button" title="LOGIN">
                       <Dropdown.Item href="#/action-1">
                         <span onClick={() => notificationClick()}>
                           <img
@@ -167,56 +196,27 @@ const Navbaar = () => {
             </Container>
           </Navbar>
         ))}
+
         <div className="sales-navbar sub_header_hide">
-          <div class="Nav_link">
-            MOBILE & MORE
-            <div>
-              <ul className="nav_Filter">
-                <li> Mobile & More content...</li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            MEN
-            <div>
-              <ul className="nav_Filter">
-                <li> Men content...</li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            WOMEN
-            <div>
-              <ul className="nav_Filter">
-                <li>Women content...</li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            HOME & KITCHEN
-            <div>
-              <ul className="nav_Filter">
-                <li> Home & Kitchen content...</li>
-                <li></li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            APPLIANCES
-            <div>
-              <ul className="nav_Filter">
-                <li> Appliances content...</li>
-              </ul>
-            </div>
-          </div>
-          <div class="Nav_link">
-            SPORTS & MORE
-            <div>
-              <ul className="nav_Filter">
-                <li> Sports & More content...</li>
-              </ul>
-            </div>
-          </div>
+          {filterdata &&
+            filterdata?.map((e) => {
+              console.log(e, "category");
+              return (
+                <>
+                  <div class="Nav_link">
+                    {e.category}
+                    <div className="nav_Filter">
+                      <ul>
+                        <li>{e.subcategory}</li>
+                      </ul>
+                      <ul>
+                        <li onClick={() => brandClick()}>{e.brands}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
         </div>
       </div>
     </>
