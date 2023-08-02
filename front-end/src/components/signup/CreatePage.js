@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Form, Field } from "react-final-form";
@@ -15,16 +15,12 @@ const Registeration = () => {
   // const details = useSelector((state) => state);
   // console.log(details, "detailssssaaaa");
 
-  const registerData = {
-    username: "",
-    email: "",
-    password: "",
-  };
-  useEffect(() => {}, []);
   const onSubmit = (values) => {
     dispatch(registerAction(values));
 
-    console.log(values, "initialValues");
+    navigate("/login");
+
+    // console.log(values, "initialValues");
     // if (values) {
     //   let data = localStorage.getItem("items");
     //   if (data) {

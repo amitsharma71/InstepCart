@@ -11,8 +11,8 @@ import { updateProduct } from "../../Redux/action/updateProductAction";
 const ProductForm = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
+  console.log(data, "abc");
 
-  console.log(data, "");
 
   // Add product from admin
 
@@ -81,6 +81,7 @@ const ProductForm = () => {
         {({ handleSubmit, submitting }) => (
           <form onSubmit={handleSubmit}>
             <div>
+
               <Row>
                 <Col sm={12} md={12} lg={6}>
                   <div className="left_addtoproduct">
@@ -106,6 +107,7 @@ const ProductForm = () => {
                     </Field>
                   </div>
 
+
                   <div className="left_addtoproduct">
                     <label htmlFor="description">Description:</label>
                     <Field
@@ -118,6 +120,7 @@ const ProductForm = () => {
                     />
                   </div>
 
+      
                   <div className="left_addtoproduct">
                     <label htmlFor="brand">Brand Name:</label>
                     <Field
@@ -188,6 +191,7 @@ const ProductForm = () => {
                       required
                     />
                   </div>
+
 
                   <div className="left_addtoproduct">
                     <label htmlFor="title">title</label>

@@ -7,6 +7,7 @@ import ProductDetailReducer from "../reducer/productDetailSlice";
 import getProductActionReducer from "../reducer/getProductReducer";
 import PostProductDataReducer from "../reducer/adminPostProductReducer";
 import GetAdminProductListDataReducer from "../reducer/getProductAdminListReducer";
+import FilterDataByCategoryReducer from "../reducer/getCategoryReducer";
 import deleteProductReducer from "../reducer/deleteProductReducer";
 import updateProductReducer from "../reducer/updateProductReducer";
 
@@ -20,6 +21,7 @@ export const store = configureStore({
     getproductdata: getProductActionReducer,
     postproductAdmindata: PostProductDataReducer,
     GetAdminProductAllListData: GetAdminProductListDataReducer,
+    filtercategoryData: FilterDataByCategoryReducer,
     deleteProduct: deleteProductReducer,
     updateProductData: updateProductReducer,
   },

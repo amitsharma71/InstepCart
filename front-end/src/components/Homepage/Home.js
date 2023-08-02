@@ -184,7 +184,7 @@ const Home = () => {
                     })}
                 </Row>
               </Col>
-              <Col lg={3}></Col>
+              {/* <Col lg={3}></Col> */}
             </Row>
           </div>
         </div>

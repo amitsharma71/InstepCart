@@ -50,8 +50,8 @@ function AllProductListing() {
               <th>Title</th>
               <th>Category</th>
               <th>Sub Category</th>
-              <th>Price</th>
               <th>Brand</th>
+              <th>Price</th>
               <th>action</th>
             </tr>
           </thead>
@@ -65,8 +65,9 @@ function AllProductListing() {
                       <td>{product.title}</td>
                       <td>{product.category}</td>
                       <td>{product.subcategory}</td>
-                      <td>{product.price}</td>
                       <td>{product.brand}</td>
+                      <td>{product.price}</td>
+
                       <td>
                         <FaEdit className=".product_icon"
                           onClick={() => editClick(product._id)}
