@@ -58,10 +58,21 @@
   padding: 10px 28px !important;
 } */
 .nav_bar {
+  gap: 20px;
+  width: 100% !important;
   display: flex !important;
   flex-wrap: nowrap;
   justify-content: space-between !important;
-  padding: 0px 40px;
+  padding: 0px 60px;
+}
+
+@media screen and (max-width: 746px){
+    .search_button{
+      padding: 0px 10px !important;
+    }
+    .nav_bar {
+       padding: 0px 10px !important;
+    }
 }
 
 .hide_links {
@@ -114,6 +125,14 @@
   justify-content: space-between;
 }
 
+
+.dropdown_button{
+  margin: 0%;
+  border: 0px !important;
+  height: 40px;
+  background-color: #0f336d !important;
+  color: #fff;
+}
 .nav-icons {
   display: flex;
   align-items: center;
@@ -142,7 +161,7 @@ img {
   gap: 19px;
   font-weight: 700;
   padding: 0px;
-  position: relative;
+  
 }
 
 p {
@@ -186,37 +205,81 @@ p {
   padding: 10px;
   color: white;
   margin-right: 20px;
+  position: relative;
 }
 .Nav_link:hover {
   background-color: white;
   color: #0f336d;
+  white-space: nowrap;
 }
 .nav_Filter {
-  padding: 10px;
+  /* padding: 10px; */
   margin-bottom: 0;
-  color: #000;
+  /* color: #000; */
 }
+
+.nav_Filter div{
+    display: flex;
+}
+
+ul li{
+  color: #A0A0A0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
 
 .Nav_link .nav_Filter {
   display: none;
-  width: 1100px;
-  height: 300px;
+  width: auto;
+  height: auto;
   background-color: #fff;
   position: absolute;
   top: 44px;
-  right: 23%;
-
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  /* right: -80%; */
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  padding: 10px 40px;
+  padding-left: 10px;
+  line-height: 30px;
+}
+
+.border_right{
+  border-right: 1px solid #000 !important;
+  padding-right: 20px;
+  
+}
+
+h5{
+  color: #000;
 }
 
 .Nav_link:hover .nav_Filter {
   display: block;
 }
+.Electric_positon{
+  right: -121%;
+}
 
+.men_position{
+  right: -320%;
+}
+
+.Women_Position{
+  right: -230%;
+}
+
+.home_position{
+  right: -50%;
+}
+
+.Appliance_position{
+  right: -120%;
+}
+.sport_position{
+  right: -110%;
+}
 /* -----------------------------------------------------End Nav_link Css-------------------------------------------------- */
 
 .body {
@@ -378,11 +441,9 @@ p {
   margin-bottom: 10px;
 }
 
-.item_rating p{
+.item_rating p {
   font-size: 19px;
 }
-
-
 
 /* ------------------------------------signup-------------------------------------------- */
 
@@ -647,8 +708,8 @@ footer ul {
 }
 
 .Soc_icon {
-  color: yellow;
-  margin-right: 10px;
+  color: yellow !important;
+  margin-right: 10px !important;
 }
 
 /* / Responsive adjustments / */
@@ -700,3 +761,88 @@ footer ul {
     border: none;
   }
 }
+
+/* ------------------------------------------------------------------All Data Listing ----------------------------------------------- */
+
+.product_icon {
+  /* margin-left: 10px; */
+  width: 22px;
+  height: 25px;
+}
+.container_width {
+  width: 100%;
+  max-width: 1800px !important;
+}
+
+.index_category {
+  max-width: 350px;
+}
+.icon_div {
+  display: flex;
+  align-items: center;
+  gap: 15px !important;
+  justify-content: center;
+  padding: 15px !important;
+}
+
+.admin_sidebar {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+}
+/* ------------------------------------------------------------------All Data Listing ----------------------------------------------- */
+
+/* ------------------------------------------------------------------ Add Product Form ---------------------------------------------- */
+
+.left_addtoproduct {
+  display: flex;
+  flex-direction: column;
+}
+
+.left_addtoproduct label {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.descirption_box {
+  margin-bottom: 20px;
+  /* max-width: 500px; */
+  /* width: 100%; */
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 0px 10px;
+}
+
+.descirption_box:focus-visible {
+  outline: 0 !important;
+  box-shadow: 0 !important;
+}
+
+.descirption_box:hover {
+  border-color: #2d2f3d;
+}
+
+.submit_button {
+  width: 100%;
+  /* max-width: 500px; */
+  height: 50px;
+  border-radius: 10px;
+  background-image: linear-gradient(#ff914c, #ff6161);
+  color: #fff;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.update_product{
+  padding: 10px 40px;
+}
+
+.editproduct_close_button{
+  border: none;
+
+}
+/* ------------------------------------------------------------------ Add Product Form ---------------------------------------------- */

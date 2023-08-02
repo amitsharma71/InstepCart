@@ -47,6 +47,7 @@ const protects = {
         { path: "/notification", element: <Notification /> },
         { path: "/likeitem", element: <LikeItem /> },
         { path: "/productdetail/:id", element: <ProductDetails /> },
+        // { path: "/updateproduct/:id", element: <ProductForm /> },
         { path: "*", element: "NO PAGE FOUND" },
       ],
     },

@@ -17,7 +17,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="admin_sidebar" style={{ width: 300 }}>
+    <div className="admin_sidebar col_hide">
       <Sidenav defaultOpenKeys={["3", "4"]}>
         <Sidenav.Body>
           <Nav activeKey="1">

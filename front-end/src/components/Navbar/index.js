@@ -184,7 +184,7 @@ const Navbaar = () => {
                       <img src="/Image/location.png" alt="location" />
                       <img src="/Image/cart.png" alt="cart" />
                     </Nav.Link>
-                    <Nav.Link href="www.google.com">MOBILE & MORE</Nav.Link>
+                    <Nav.Link href="www.google.com">ELECTRONICS</Nav.Link>
                     <Nav.Link href="#action2">MEN</Nav.Link>
                     <Nav.Link href="#action2">WOMEN</Nav.Link>
                     <Nav.Link href="#action2">HOME & KITCHEN</Nav.Link>

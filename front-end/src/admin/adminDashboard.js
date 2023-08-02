@@ -11,7 +11,6 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import Sidebar from "./sidebar";
 
 function Dashboard({ percentage }) {
   const data = [
