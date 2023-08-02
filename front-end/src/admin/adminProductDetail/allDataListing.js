@@ -4,11 +4,10 @@ import Table from "react-bootstrap/Table";
 import Sidebar from "../sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { allAdminProductList } from "../../Redux/action/getAllProductListing";
-import { FiEdit } from "react-icons/fi";
+import { FaEdit } from "react-icons/fa";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { deleteProduct } from "../../Redux/action/deleteProductAction";
 import { updateProduct } from "../../Redux/action/updateProductAction";
-import StaticExample from "./updateProductForm";
 import MydModalWithGrid from "./updateProductForm";
 
 function AllProductListing() {
@@ -69,11 +68,11 @@ function AllProductListing() {
                       <td>{product.price}</td>
                       <td>{product.brand}</td>
                       <td>
-                        <AiFillCreditCard
+                        <FaEdit className=".product_icon"
                           onClick={() => editClick(product._id)}
                         />
 
-                        <RiDeleteBinFill
+                        <RiDeleteBinFill className=".product_icon"
                           onClick={() => deleteClick(product._id)}
                         />
 

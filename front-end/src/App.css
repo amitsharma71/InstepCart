@@ -837,4 +837,12 @@ footer ul {
   margin-top: 30px;
 }
 
+.update_product{
+  padding: 10px 40px;
+}
+
+.editproduct_close_button{
+  border: none;
+
+}
 /* ------------------------------------------------------------------ Add Product Form ---------------------------------------------- */
