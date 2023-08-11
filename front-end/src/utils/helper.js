@@ -1,7 +1,7 @@
 export const withoutAuthRoute = [
-    "home",
-    "login",
-    "createlogin",
-    "productdetail",
-    "*"
-  ];
+  "home",
+  "login",
+  "createlogin",
+  "productdetail",
+  "*",
+];

@@ -20,10 +20,10 @@ export const getToken = () => {
 };
 
 export const getUserId = () => {
-    var token = getToken();
-    let decoded = null;
-    if (token) {
-      decoded = jwtDecode(token);
-    }
-    return decoded;
-  };
+  var token = getToken();
+  let decoded = null;
+  if (token) {
+    decoded = jwtDecode(token);
+  }
+  return decoded;
+};

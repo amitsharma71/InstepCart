@@ -40,7 +40,6 @@ function AllProductListing() {
   const handleClose = () => setShow(false);
   return (
     <>
-  
       <div>
         <h2>All Products</h2>
         <Table responsive striped bordered hover variant="light">
@@ -69,14 +68,15 @@ function AllProductListing() {
                       <td>{product.price}</td>
 
                       <td>
-                        <FaEdit className=".product_icon"
+                        <FaEdit
+                          className=".product_icon"
                           onClick={() => editClick(product._id)}
                         />
 
-                        <RiDeleteBinFill className=".product_icon"
+                        <RiDeleteBinFill
+                          className=".product_icon"
                           onClick={() => deleteClick(product._id)}
                         />
-
                       </td>
                     </tr>
                   </>
